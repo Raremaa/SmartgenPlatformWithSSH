@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.zing.pojo">
+
+    <class name="Productevalute" table="productevalute">
+        <id name="id" column="Id"/>
+        <property name="proevaluteNo" column="Proevalute_no"/>
+        <property name="proevaluteTitle" column="Proevalute_title"/>
+        <property name="proevaluteStar" column="Proevalute_star"/>
+        <property name="proevaluteContent" column="Proevalute_content"/>
+        <property name="proevaluteTime" column="Proevalute_time"/>
+        <property name="proevalutePicture" column="Proevalute_picture"/>
+        <many-to-one name="product" column="product_id" class="Product"/>
+        <many-to-one name="user" column="User_id" class="User"/>
+        <one-to-one name="purchase" class="Purchase" property-ref="productevalute"/>
+    </class>
+</hibernate-mapping>

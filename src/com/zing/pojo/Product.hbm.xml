@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.zing.pojo">
+
+    <class name="Product" table="product">
+        <id name="id" column="Id"/>
+        <property name="productNo" column="Product_no"/>
+        <property name="productName" column="Product_name"/>
+        <property name="productPrice" column="Product_price"/>
+        <property name="productClassify" column="Product_classify"/>
+        <property name="productLabel" column="Product_label"/>
+        <property name="productPicture" column="Product_picture"/>
+        <property name="productStatus" column="Product_status"/>
+        <property name="productMsg" column="Product_msg"/>
+        <property name="productOriginPrice" column="Product_originPrice"/>
+        <property name="productFreight" column="Product_freight"/>
+        <property name="productCount" column="Product_count"/>
+        <property name="productSell" column="Product_sell"/>
+        <property name="productBestCount" column="Product_bestCount"/>
+        <property name="productMiddleCount" column="Product_middleCount"/>
+        <property name="productBadCount" column="Product_badCount"/>
+        <property name="productRequireMoney" column="Product_requireMoney"/>
+        <property name="productCurrentMoney" column="Product_currentMoney"/>
+        <property name="productCountPrice" column="Product_countPrice"/>
+        <property name="productOneMsg" column="Product_oneMsg"/>
+        <many-to-one name="creativeproject" column="Creproject_id" class="Creativeproject"/>
+        <many-to-one name="company" column="Company_id" class="Company"/>
+        <set name="productevalutes">
+            <key column="Product_id"/>
+            <one-to-many class="Productevalute"/>
+        </set>
+        <set name="purchases" table="product_purchase_relation">
+            <key column="Product_id"/>
+            <many-to-many class="Purchase" column="Purchase_id"/>
+        </set>
+        <set name="browsinghistories">
+            <key column="Product_id"/>
+            <one-to-many class="Browsinghistory"/>
+        </set>
+        <set name="collectioninfos">
+            <key column="Product_id"/>
+            <one-to-many class="Collectioninfo"/>
+        </set>
+        <set name="shoppingcarts" table="shoppingcart_product_relation">
+            <key column="Product_id"/>
+            <many-to-many class="Shoppingcart" column="Shoppingcart_id"/>
+        </set>
+    </class>
+</hibernate-mapping>

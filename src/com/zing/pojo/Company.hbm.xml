@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.zing.pojo">
+
+    <class name="Company" table="company">
+        <id name="id" column="Company_id"/>
+        <property name="companyName" column="Company_name"/>
+        <property name="companyUserName" column="Company_userName"/>
+        <property name="companyPhone" column="Company_phone"/>
+        <property name="companyCharterNumber" column="Company_charterNumber"/>
+        <property name="companyPassword" column="Company_password"/>
+        <property name="companyLogo" column="Company_logo"/>
+        <property name="companyLocation" column="Company_location"/>
+        <property name="companyIdentity" column="Company_identity"/>
+        <set name="products">
+            <key column="Company_id"/>
+            <one-to-many class="Product"/>
+        </set>
+    </class>
+</hibernate-mapping>

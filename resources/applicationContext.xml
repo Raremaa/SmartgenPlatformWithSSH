@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+    <!--读取db.properties文件-->
+    <context:property-placeholder location="db.properties"/>
+    <!--根据配置文件建立c3p0连接池-->
+    <bean name="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <property name="jdbcUrl" value="${jdbc.jdbcurl}"/>
+        <property name="driverClass" value="${jdbc.driverClass}"/>
+        <property name="user" value="${jdbc.user}"/>
+        <property name="password" value="${jdbc.password}"/>
+    </bean>
+    <!--hibernate配置信息 创建sessionFactory-->
+    <bean name="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+        <!--注入连接池-->
+        <property name="dataSource" ref="dataSource"/>
+        <!--hibernate主配置4+4(其中4个在连接池中已经配好)-->
+        <property name="hibernateProperties">
+            <props>
+                <!--数据库方言-->
+                <prop key="hibernate.dialect">org.hibernate.dialect.MySQL57Dialect</prop>
+                <prop key="hibernate.show_sql">true</prop>
+                <prop key="hibernate.format_sql">true</prop>
+                <!--自动创建更新表-->
+                <prop key="hibernate.hbm2ddl.auto">update</prop>
+            </props>
+        </property>
+        <!--orm元数据-->
+        <property name="mappingDirectoryLocations" value="classpath:com/zing/*/pojo"/>
+    </bean>
+    <!--spring核心事务管理器-->
+    <bean name="transactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
+        <!--注入sessionFactory-->
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+    <!--开启注解方式注入事务-->
+    <tx:annotation-driven transaction-manager="transactionManager"/>
+    <!--Action(注意这里要把scope属性设置为prototype即多例模式 这样才符合struts2的架构,即每次都生成新的valueStack)-->
+    <!--ServiceDao-->
+    <!--Dao-->
+</beans>

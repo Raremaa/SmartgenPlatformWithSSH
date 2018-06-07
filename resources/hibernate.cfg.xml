@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+    "-//Hibernate/Hibernate Configuration DTD//EN"
+    "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="connection.url">jdbc:mysql://localhost:3306/smartgenplatform</property>
+    <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+
+      <property name="hibernate.dialect">org.hibernate.dialect.MySQL57Dialect</property>
+     <property name="hbm2ddl.auto">update</property>
+      <mapping resource="com/zing/pojo/Browsinghistory.hbm.xml"/>
+      <mapping class="com.zing.pojo.Browsinghistory"/>
+      <mapping class="com.zing.pojo.Collectioninfo"/>
+      <mapping resource="com/zing/pojo/Collectioninfo.hbm.xml"/>
+      <mapping resource="com/zing/pojo/Product.hbm.xml"/>
+      <mapping class="com.zing.pojo.Product"/>
+      <mapping resource="com/zing/pojo/Productevalute.hbm.xml"/>
+      <mapping class="com.zing.pojo.Productevalute"/>
+      <mapping class="com.zing.pojo.Purchase"/>
+      <mapping resource="com/zing/pojo/Purchase.hbm.xml"/>
+      <mapping resource="com/zing/pojo/Purchaseaddress.hbm.xml"/>
+      <mapping class="com.zing.pojo.Purchaseaddress"/>
+      <mapping resource="com/zing/pojo/Shoppingcart.hbm.xml"/>
+      <mapping class="com.zing.pojo.Shoppingcart"/>
+      <mapping resource="com/zing/user/pojo/UserEntity.hbm.xml"/>
+      <mapping class="com.zing.user.pojo.UserEntity"/>
+      <mapping resource="com/zing/pojo/User.hbm.xml"/>
+      <mapping class="com.zing.pojo.User"/>
+      <mapping resource="com/zing/pojo/Company.hbm.xml"/>
+      <mapping class="com.zing.pojo.Company"/>
+      <mapping resource="com/zing/pojo/Creativeproject.hbm.xml"/>
+      <mapping class="com.zing.pojo.Creativeproject"/>
+      <mapping resource="com/zing/pojo/Evaluationexpert.hbm.xml"/>
+      <mapping resource="com/zing/pojo/Product.hbm.xml"/>
+      <mapping class="com.zing.pojo.Product"/>
+  </session-factory>
+</hibernate-configuration>
