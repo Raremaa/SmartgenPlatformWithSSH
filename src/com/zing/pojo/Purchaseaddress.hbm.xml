@@ -5,7 +5,9 @@
 <hibernate-mapping package="com.zing.pojo">
 
     <class name="Purchaseaddress" table="purchaseaddress">
-        <id name="id" column="Id"/>
+        <id name="id" column="Id">
+            <generator class="native"/>
+        </id>
         <property name="puraddressIsChoice" column="Puraddress_isChoice"/>
         <property name="puraddressUserName" column="Puraddress_userName"/>
         <property name="puraddressAddress" column="Puraddress_address"/>

@@ -8,7 +8,7 @@ import java.util.Set;
 /**
  * 订单表
  * 与用户表多对一关系
- * 与产品表多对多关系 通过中间表product_purchase_relation维护关系
+ * 与产品表多对多关系 通过中间表product_purchase_relation表示关系 由订单表维护关系
  * 与商品评价信息表一对一关系 关系交给订单表维护
  */
 public class Purchase extends BasePojo {

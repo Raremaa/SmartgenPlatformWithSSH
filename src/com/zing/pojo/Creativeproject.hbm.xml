@@ -5,7 +5,9 @@
 <hibernate-mapping package="com.zing.pojo">
 
     <class name="Creativeproject" table="creativeproject">
-        <id name="id" column="Creproject_id"/>
+        <id name="id" column="Creproject_id">
+            <generator class="native"/>
+        </id>
         <property name="expertJobNumber" column="Expert_jobNumber"/>
         <property name="userId" column="User_id"/>
         <property name="companyId" column="Company_id"/>
@@ -23,7 +25,8 @@
         <property name="creprojectEvaluateTime" column="Creproject_evaluateTime"/>
         <property name="creprojectEvaluateResult" column="Creproject_evaluateResult"/>
         <property name="creprojectEvaluateOpinion" column="Creproject_evaluateOpinion"/>
-        <set name="products">
+        <!--一对多关系 一的一方放弃关系维护-->
+        <set name="products" inverse="true" cascade="save-update">
             <key column="Creproject_id"/>
             <one-to-many class="Product"/>
         </set>

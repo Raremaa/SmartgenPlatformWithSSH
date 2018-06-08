@@ -5,7 +5,9 @@
 <hibernate-mapping package="com.zing.pojo">
 
     <class name="Purchase" table="purchase">
-        <id name="id" column="Id"/>
+        <id name="id" column="Id">
+            <generator class="native"/>
+        </id>
         <property name="purchaseNo" column="Purchase_no"/>
         <property name="purchasePaymentTime" column="Purchase_paymentTime"/>
         <property name="purchasePatternOfPayment" column="Purchase_patternOfPayment"/>
@@ -19,10 +21,11 @@
         <property name="purchaseTime" column="Purchase_time"/>
         <property name="purchaseWay" column="Purchase_way"/>
         <many-to-one name="user" column="User_id" class="User"/>
+        <!--多对多关系 本方负责维护关系-->
         <set name="products" table="product_purchase_relation">
             <key column="Purchase_id"/>
             <many-to-many class="Product" column="Product_id"/>
         </set>
-        <many-to-one name="productevalute" column="productevalute_id" class="Productevalute" unique="true"/>
+        <many-to-one name="productevalute" column="productevalute_id" class="Productevalute" unique="true" cascade="delete"/>
     </class>
 </hibernate-mapping>

@@ -5,7 +5,9 @@
 <hibernate-mapping package="com.zing.pojo">
 
     <class name="Productevalute" table="productevalute">
-        <id name="id" column="Id"/>
+        <id name="id" column="Id">
+            <generator class="native"/>
+        </id>
         <property name="proevaluteNo" column="Proevalute_no"/>
         <property name="proevaluteTitle" column="Proevalute_title"/>
         <property name="proevaluteStar" column="Proevalute_star"/>

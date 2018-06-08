@@ -5,7 +5,9 @@
 <hibernate-mapping package="com.zing.pojo">
 
     <class name="Company" table="company">
-        <id name="id" column="Company_id"/>
+        <id name="id" column="Company_id">
+            <generator class="native"/>
+        </id>
         <property name="companyName" column="Company_name"/>
         <property name="companyUserName" column="Company_userName"/>
         <property name="companyPhone" column="Company_phone"/>
@@ -14,7 +16,8 @@
         <property name="companyLogo" column="Company_logo"/>
         <property name="companyLocation" column="Company_location"/>
         <property name="companyIdentity" column="Company_identity"/>
-        <set name="products">
+        <!--一对多关系 一的一方放弃关系维护-->
+        <set name="products" inverse="true" cascade="save-update">
             <key column="Company_id"/>
             <one-to-many class="Product"/>
         </set>

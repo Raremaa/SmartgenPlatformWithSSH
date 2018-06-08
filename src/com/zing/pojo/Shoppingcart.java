@@ -8,7 +8,7 @@ import java.util.Set;
 /**
  * 购物车表
  * 与用户表多对一关系
- * 与产品表多对多关系 通过中间表shoppingcart_product_relation维护关系
+ * 与产品表多对多关系 通过中间表shoppingcart_product_relation表示关系 由购物车表维护关系
  */
 public class Shoppingcart extends BasePojo {
 

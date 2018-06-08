@@ -5,7 +5,9 @@
 <hibernate-mapping package="com.zing.pojo">
 
     <class name="Product" table="product">
-        <id name="id" column="Id"/>
+        <id name="id" column="Id">
+            <generator class="native"/>
+        </id>
         <property name="productNo" column="Product_no"/>
         <property name="productName" column="Product_name"/>
         <property name="productPrice" column="Product_price"/>
@@ -27,23 +29,28 @@
         <property name="productOneMsg" column="Product_oneMsg"/>
         <many-to-one name="creativeproject" column="Creproject_id" class="Creativeproject"/>
         <many-to-one name="company" column="Company_id" class="Company"/>
-        <set name="productevalutes">
+        <!--一对多关系 一的一方放弃关系维护-->
+        <set name="productevalutes" inverse="true" cascade="save-update">
             <key column="Product_id"/>
             <one-to-many class="Productevalute"/>
         </set>
-        <set name="purchases" table="product_purchase_relation">
+        <!--多对多关系 本方放弃关系维护-->
+        <set name="purchases" table="product_purchase_relation" inverse="true">
             <key column="Product_id"/>
             <many-to-many class="Purchase" column="Purchase_id"/>
         </set>
-        <set name="browsinghistories">
+        <!--一对多关系 一的一方放弃关系维护-->
+        <set name="browsinghistories" inverse="true" cascade="save-update">
             <key column="Product_id"/>
             <one-to-many class="Browsinghistory"/>
         </set>
-        <set name="collectioninfos">
+        <!--一对多关系 一的一方放弃关系维护-->
+        <set name="collectioninfos" inverse="true" cascade="save-update">
             <key column="Product_id"/>
             <one-to-many class="Collectioninfo"/>
         </set>
-        <set name="shoppingcarts" table="shoppingcart_product_relation">
+        <!--多对多关系 本方放弃关系维护-->
+        <set name="shoppingcarts" table="shoppingcart_product_relation" inverse="true">
             <key column="Product_id"/>
             <many-to-many class="Shoppingcart" column="Shoppingcart_id"/>
         </set>

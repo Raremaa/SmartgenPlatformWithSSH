@@ -10,10 +10,10 @@ import java.util.Set;
  * 与创意项目表多对一关系
  * 与公司表多对一关系
  * 与商品评价信息表一对多关系
- * 与订单表多对多关系 通过中间表product_purchase_relation维护关系
+ * 与订单表多对多关系 通过中间表product_purchase_relation表示关系 由订单表维护关系
  * 与浏览历史表一对多关系
  * 与收藏表一对多关系
- * 与购物车表多对多关系 通过中间表shoppingcart_product_relation维护关系
+ * 与购物车表多对多关系 通过中间表shoppingcart_product_relation表示关系 由购物车表维护关系
  */
 public class Product extends BasePojo {
 
