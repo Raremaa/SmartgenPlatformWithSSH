@@ -17,16 +17,16 @@
         <filter-name>openSessionInView</filter-name>
         <filter-class>org.springframework.orm.hibernate5.support.OpenSessionInViewFilter</filter-class>
     </filter>
+    <filter-mapping>
+        <filter-name>openSessionInView</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
     <!--struts2 核心过滤器 由于struts2的架构只有结束才会出口，故放在所有过滤器最下方-->
     <filter>
         <filter-name>struts2</filter-name>
         <filter-class>org.apache.struts2.dispatcher.filter.StrutsPrepareAndExecuteFilter</filter-class>
     </filter>
-
-    <filter-mapping>
-        <filter-name>openSessionInView</filter-name>
-        <url-pattern>/*</url-pattern>
-    </filter-mapping>
     <filter-mapping>
         <filter-name>struts2</filter-name>
         <url-pattern>/*</url-pattern>

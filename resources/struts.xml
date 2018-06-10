@@ -5,5 +5,11 @@
         "http://struts.apache.org/dtds/struts-2.5.dtd">
 
 <struts>
+    <!--由spring进行对象创建 同时进行自动依赖注入-->
+    <constant name="struts.objectFactory" value="spring"/>
+<package name="action" extends="struts-default" namespace="/">
+    <action name="UserAction/*" class="userAction" method="{1}">
 
+    </action>
+</package>
 </struts>

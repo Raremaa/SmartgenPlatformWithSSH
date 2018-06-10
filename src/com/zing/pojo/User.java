@@ -150,4 +150,19 @@ public class User extends BasePojo {
     public void setShoppingcarts(Set<Shoppingcart> shoppingcarts) {
         this.shoppingcarts = shoppingcarts;
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "userRealName='" + userRealName + '\'' +
+                ", userName='" + userName + '\'' +
+                ", userPhone='" + userPhone + '\'' +
+                ", userPassword='" + userPassword + '\'' +
+                ", userSex=" + userSex +
+                ", userHeadPortrait='" + userHeadPortrait + '\'' +
+                ", userIdNumber='" + userIdNumber + '\'' +
+                ", userLocation='" + userLocation + '\'' +
+                ", userIdentity=" + userIdentity +
+                '}';
+    }
 }
