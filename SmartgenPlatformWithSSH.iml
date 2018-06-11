@@ -35,8 +35,11 @@
       <configuration>
         <datasource-map>
           <unit-entry name="noname-applicationContext.xml@1276" value="148abf31-4434-461a-85a0-177c5f76df70" />
+          <unit-entry name="noname-applicationContext.xml@1286" value="148abf31-4434-461a-85a0-177c5f76df70" />
         </datasource-map>
-        <naming-strategy-map />
+        <naming-strategy-map>
+          <unit-entry name="noname-applicationContext.xml@1286" />
+        </naming-strategy-map>
       </configuration>
     </facet>
   </component>
@@ -59,12 +62,12 @@
     <orderEntry type="library" name="mysql:mysql-connector-java:5.1.38" level="project" />
     <orderEntry type="library" name="org.apache.geronimo.specs:geronimo-jta_1.1_spec:1.1.1" level="project" />
     <orderEntry type="library" name="org.apache.logging.log4j:log4j-core:2.8.2" level="project" />
-    <orderEntry type="library" name="org.apache.struts.xwork:xwork-core:2.3.34" level="project" />
     <orderEntry type="library" name="org.apache.struts:struts2-spring-plugin:2.5.14.1" level="project" />
     <orderEntry type="library" name="org.aspectj:aspectjweaver:1.6.8" level="project" />
     <orderEntry type="library" name="org.hibernate:hibernate-entitymanager:5.2.1.Final" level="project" />
     <orderEntry type="library" name="org.springframework:spring-web:4.3.16.RELEASE" level="project" />
     <orderEntry type="library" name="taglibs:standard:1.1.2" level="project" />
     <orderEntry type="library" name="struts2-json-plugin-2.3.16.3" level="project" />
+    <orderEntry type="library" name="org.apache.struts.xwork:xwork-core:2.3.34" level="project" />
   </component>
 </module>

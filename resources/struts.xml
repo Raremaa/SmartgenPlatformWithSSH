@@ -8,8 +8,19 @@
     <!--由spring进行对象创建 同时进行自动依赖注入-->
     <constant name="struts.objectFactory" value="spring"/>
 <package name="action" extends="struts-default" namespace="/">
-    <action name="UserAction/*" class="userAction" method="{1}">
-
+    <!--配置result-type 返回json字符串-->
+    <result-types>
+        <result-type name="json" class="org.apache.struts2.json.JSONResult"/>
+    </result-types>
+    <interceptors>
+        <interceptor name="json" class="org.apache.struts2.json.JSONInterceptor"/>
+    </interceptors>
+    <!--struts2 2.5+需添加这一条进行动态方法调用-->
+    <global-allowed-methods>regex:.*</global-allowed-methods>
+    <action name="UserAction_*" class="userAction" method="{1}">
+        <result type="json">
+            <param name="root">datas</param>
+        </result>
     </action>
 </package>
 </struts>

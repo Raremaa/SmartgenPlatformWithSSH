@@ -14,7 +14,3 @@
     <li>collectionInfo</li> 
     <li>browsinghistory</li>
 </ul>
-
-是否在多对一 一对多关系的set集合初始化加上初始容量问题
-主键生成策略
-级联操作

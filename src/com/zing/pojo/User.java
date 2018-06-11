@@ -17,7 +17,7 @@ public class User extends BasePojo {
 
     private String userRealName;//用户真实姓名
     private String userName;//用户账户名
-    private String userPhone;//用户手机号
+    private String userPhone;//用户手机号 唯一约束
     private String userPassword;//用户密码
     private Integer userSex;//用户性别 0-男 1-女
     private String userHeadPortrait;//头像图片路径
@@ -164,5 +164,20 @@ public class User extends BasePojo {
                 ", userLocation='" + userLocation + '\'' +
                 ", userIdentity=" + userIdentity +
                 '}';
+    }
+
+    public User(String userRealName, String userName, String userPhone, String userPassword, Integer userSex, String userHeadPortrait, String userIdNumber, String userLocation, Integer userIdentity) {
+        this.userRealName = userRealName;
+        this.userName = userName;
+        this.userPhone = userPhone;
+        this.userPassword = userPassword;
+        this.userSex = userSex;
+        this.userHeadPortrait = userHeadPortrait;
+        this.userIdNumber = userIdNumber;
+        this.userLocation = userLocation;
+        this.userIdentity = userIdentity;
+    }
+
+    public User() {
     }
 }

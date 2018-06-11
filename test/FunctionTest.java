@@ -10,29 +10,23 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("classpath:applicationContext.xml")
 public class FunctionTest {
 
     @Autowired
-    private UserDao userDao;
-    @Test
-    public void fun2(){
-        User user = null;
-        try {
-            user = userDao.getUserById(6);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        System.out.println(user);
-    }
-
-    @Autowired
     private UserServiceDao userServiceDao;
     @Test
-    public void fun1() throws Exception {
-        User user = userServiceDao.getUserById(6);
-        System.err.println(user);
+    public void funUser1() throws Exception {
+        User user = new User();
+        user.setUserName("weq");
+        user.setUserSex(1);
+        user.setUserPhone("23928472312");
+        user.setUserPassword("134124124124");
+        user.setUserHeadPortrait("123123123123141");
+        user.setUserIdentity(1);
+        userServiceDao.save(user);
     }
 }
