@@ -12,20 +12,11 @@
         <property name="purchasePaymentTime" column="Purchase_paymentTime"/>
         <property name="purchasePatternOfPayment" column="Purchase_patternOfPayment"/>
         <property name="purchaseState" column="Purchase_state"/>
-        <property name="purchaseCount" column="Purchase_count"/>
-        <property name="purchaseClassify" column="Purchase_classify"/>
-        <property name="purchaseName" column="Purchase_name"/>
         <property name="purchasePrice" column="Purchase_price"/>
-        <property name="purchaseMsg" column="Purchase_msg"/>
-        <property name="purchaseFreight" column="Purchase_freight"/>
-        <property name="purchaseTime" column="Purchase_time"/>
-        <property name="purchaseWay" column="Purchase_way"/>
         <many-to-one name="user" column="User_id" class="User"/>
-        <!--多对多关系 本方负责维护关系-->
-        <set name="products" table="product_purchase_relation">
+        <set name="purchaseitems" inverse="true">
             <key column="Purchase_id"/>
-            <many-to-many class="Product" column="Product_id"/>
+            <one-to-many class="Purchaseitem"/>
         </set>
-        <many-to-one name="productevalute" column="productevalute_id" class="Productevalute" unique="true" cascade="delete"/>
     </class>
 </hibernate-mapping>

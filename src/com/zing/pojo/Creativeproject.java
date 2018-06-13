@@ -2,6 +2,7 @@ package com.zing.pojo;
 
 import com.zing.base.pojo.BasePojo;
 import java.sql.Timestamp;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -24,9 +25,9 @@ public class Creativeproject extends BasePojo {
     private Integer creprojectClassify;//创意项目分类 0-生活手工 1-家具家居 2-科技数码 3-艺术娱乐 4-医疗健康 5-户外运动 6-为其他
     private Integer creprojectState;//孵化状态 0-未孵化 1-孵化中 2-已孵化
     private Integer creprojectPraise;//点赞数
-    private Timestamp creprojectModifyTime;//最后一次修改时间
-    private Timestamp creprojectReleaseTime;//最后一次发布时间
-    private Timestamp creprojectEvaluateTime;//最后一次评估时间
+    private Date creprojectModifyTime;//最后一次修改时间
+    private Date creprojectReleaseTime;//最后一次发布时间
+    private Date creprojectEvaluateTime;//最后一次评估时间
     private Integer creprojectEvaluateResult;//专家评估结果
     private String creprojectEvaluateOpinion;//专家评估意见
     private Set<Product> products = new HashSet<Product>();//外键关系-产品表-一对多关系
@@ -127,27 +128,27 @@ public class Creativeproject extends BasePojo {
         this.creprojectPraise = creprojectPraise;
     }
 
-    public Timestamp getCreprojectModifyTime() {
+    public Date getCreprojectModifyTime() {
         return creprojectModifyTime;
     }
 
-    public void setCreprojectModifyTime(Timestamp creprojectModifyTime) {
+    public void setCreprojectModifyTime(Date creprojectModifyTime) {
         this.creprojectModifyTime = creprojectModifyTime;
     }
 
-    public Timestamp getCreprojectReleaseTime() {
+    public Date getCreprojectReleaseTime() {
         return creprojectReleaseTime;
     }
 
-    public void setCreprojectReleaseTime(Timestamp creprojectReleaseTime) {
+    public void setCreprojectReleaseTime(Date creprojectReleaseTime) {
         this.creprojectReleaseTime = creprojectReleaseTime;
     }
 
-    public Timestamp getCreprojectEvaluateTime() {
+    public Date getCreprojectEvaluateTime() {
         return creprojectEvaluateTime;
     }
 
-    public void setCreprojectEvaluateTime(Timestamp creprojectEvaluateTime) {
+    public void setCreprojectEvaluateTime(Date creprojectEvaluateTime) {
         this.creprojectEvaluateTime = creprojectEvaluateTime;
     }
 
@@ -173,5 +174,49 @@ public class Creativeproject extends BasePojo {
 
     public void setProducts(Set<Product> products) {
         this.products = products;
+    }
+
+    public Creativeproject(Integer userId, String creprojectTitle, String creprojectContent, String creprojectLabel, String creprojectPicture, String creprojectVideo, String creprojectPlan, Integer creprojectClassify, Integer creprojectState, Integer creprojectPraise, Date creprojectModifyTime, Date creprojectReleaseTime, Date creprojectEvaluateTime, Integer creprojectEvaluateResult, String creprojectEvaluateOpinion) {
+        this.userId = userId;
+        this.creprojectTitle = creprojectTitle;
+        this.creprojectContent = creprojectContent;
+        this.creprojectLabel = creprojectLabel;
+        this.creprojectPicture = creprojectPicture;
+        this.creprojectVideo = creprojectVideo;
+        this.creprojectPlan = creprojectPlan;
+        this.creprojectClassify = creprojectClassify;
+        this.creprojectState = creprojectState;
+        this.creprojectPraise = creprojectPraise;
+        this.creprojectModifyTime = creprojectModifyTime;
+        this.creprojectReleaseTime = creprojectReleaseTime;
+        this.creprojectEvaluateTime = creprojectEvaluateTime;
+        this.creprojectEvaluateResult = creprojectEvaluateResult;
+        this.creprojectEvaluateOpinion = creprojectEvaluateOpinion;
+    }
+
+    public Creativeproject() {
+    }
+
+    @Override
+    public String toString() {
+        return "Creativeproject{" +
+                "expertJobNumber=" + expertJobNumber +
+                ", userId=" + userId +
+                ", companyId=" + companyId +
+                ", creprojectTitle='" + creprojectTitle + '\'' +
+                ", creprojectContent='" + creprojectContent + '\'' +
+                ", creprojectLabel='" + creprojectLabel + '\'' +
+                ", creprojectPicture='" + creprojectPicture + '\'' +
+                ", creprojectVideo='" + creprojectVideo + '\'' +
+                ", creprojectPlan='" + creprojectPlan + '\'' +
+                ", creprojectClassify=" + creprojectClassify +
+                ", creprojectState=" + creprojectState +
+                ", creprojectPraise=" + creprojectPraise +
+                ", creprojectModifyTime=" + creprojectModifyTime +
+                ", creprojectReleaseTime=" + creprojectReleaseTime +
+                ", creprojectEvaluateTime=" + creprojectEvaluateTime +
+                ", creprojectEvaluateResult=" + creprojectEvaluateResult +
+                ", creprojectEvaluateOpinion='" + creprojectEvaluateOpinion + '\'' +
+                '}';
     }
 }

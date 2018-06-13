@@ -30,14 +30,14 @@
         <many-to-one name="creativeproject" column="Creproject_id" class="Creativeproject"/>
         <many-to-one name="company" column="Company_id" class="Company"/>
         <!--一对多关系 一的一方放弃关系维护-->
+        <set name="purchaseitems" inverse="true">
+            <key column="Product_id"/>
+            <one-to-many class="Purchaseitem"/>
+        </set>
+        <!--一对多关系 一的一方放弃关系维护-->
         <set name="productevalutes" inverse="true" cascade="save-update">
             <key column="Product_id"/>
             <one-to-many class="Productevalute"/>
-        </set>
-        <!--多对多关系 本方放弃关系维护-->
-        <set name="purchases" table="product_purchase_relation" inverse="true">
-            <key column="Product_id"/>
-            <many-to-many class="Purchase" column="Purchase_id"/>
         </set>
         <!--一对多关系 一的一方放弃关系维护-->
         <set name="browsinghistories" inverse="true" cascade="save-update">

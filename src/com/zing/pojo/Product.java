@@ -10,7 +10,7 @@ import java.util.Set;
  * 与创意项目表多对一关系
  * 与公司表多对一关系
  * 与商品评价信息表一对多关系
- * 与订单表多对多关系 通过中间表product_purchase_relation表示关系 由订单表维护关系
+ * 与订单详情表一对多关系
  * 与浏览历史表一对多关系
  * 与收藏表一对多关系
  * 与购物车表多对多关系 通过中间表shoppingcart_product_relation表示关系 由购物车表维护关系
@@ -39,7 +39,7 @@ public class Product extends BasePojo {
     private Creativeproject creativeproject;//外键关系-Creproject_id-创意项目表-多对一
     private Company company;//外键关系-Company_id-公司表-多对一
     private Set<Productevalute> productevalutes = new HashSet<Productevalute>();//外键关系-商品评价信息表-一对多
-    private Set<Purchase> purchases = new HashSet<Purchase>();//外键关系-product_purchase_relation表-订单表-多对多
+    private Set<Purchaseitem> purchaseitems = new HashSet<Purchaseitem>();//外键关系-订单详情表-一对多关系
     private Set<Browsinghistory> browsinghistories = new HashSet<Browsinghistory>();//外键关系-浏览历史表-一对多
     private Set<Collectioninfo> collectioninfos = new HashSet<Collectioninfo>();//外键关系-收藏表-一对多
     private Set<Shoppingcart> shoppingcarts = new HashSet<Shoppingcart>();//外键关系-shoppingcart_product_relation表-购物车表-多对多
@@ -220,12 +220,12 @@ public class Product extends BasePojo {
         this.productevalutes = productevalutes;
     }
 
-    public Set<Purchase> getPurchases() {
-        return purchases;
+    public Set<Purchaseitem> getPurchaseitems() {
+        return purchaseitems;
     }
 
-    public void setPurchases(Set<Purchase> purchases) {
-        this.purchases = purchases;
+    public void setPurchaseitems(Set<Purchaseitem> purchaseitems) {
+        this.purchaseitems = purchaseitems;
     }
 
     public Set<Browsinghistory> getBrowsinghistories() {

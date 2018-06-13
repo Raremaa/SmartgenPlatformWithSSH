@@ -26,14 +26,26 @@ public class UserServiceDaoImpl implements UserServiceDao {
     @Override
     /**
      * 条件查询用户信息
+     * 这里未使用通用查询接口数据 后续需优化
      */
     public List<User> getUserList(String condition) throws Exception {
         return userDao.getUserList(condition);
     }
 
+    /**
+     * 保存用户
+     */
     @Override
     public Integer save(User user) throws Exception {
         userDao.save(user);
         return 1;
+    }
+
+    /**
+     * 登录验证
+     */
+    @Override
+    public User login(String userName, String userPassword) throws Exception {
+        return userDao.login(userName,userPassword);
     }
 }

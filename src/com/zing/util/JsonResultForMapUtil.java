@@ -9,7 +9,7 @@ import java.util.Map;
  */
 public class JsonResultForMapUtil {
 
-    public static void packageClass(Map map, JsonResult jsonResult) throws Exception{
+    public static void packageClass(Map map, JsonResult jsonResult){
         map.put("total",jsonResult.getTotal());
         map.put("page",jsonResult.getPage());
         map.put("pageSize",jsonResult.getPageSize());

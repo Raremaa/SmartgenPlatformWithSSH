@@ -9,4 +9,5 @@ public interface UserServiceDao {
     User getUserById(Serializable id) throws Exception;
     List<User> getUserList(String condition) throws Exception;
     Integer save(User user) throws Exception;
+    User login(String userName,String userPassword) throws Exception;
 }

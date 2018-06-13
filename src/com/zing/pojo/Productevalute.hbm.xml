@@ -16,6 +16,6 @@
         <property name="proevalutePicture" column="Proevalute_picture"/>
         <many-to-one name="product" column="product_id" class="Product"/>
         <many-to-one name="user" column="User_id" class="User"/>
-        <one-to-one name="purchase" class="Purchase" property-ref="productevalute"/>
+        <many-to-one name="purchaseitem" column="purchaseitem_id" class="Purchaseitem" unique="true"/>
     </class>
 </hibernate-mapping>

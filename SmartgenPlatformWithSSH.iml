@@ -34,6 +34,7 @@
     <facet type="hibernate" name="Hibernate">
       <configuration>
         <datasource-map>
+          <unit-entry name="a.xml" value="148abf31-4434-461a-85a0-177c5f76df70" />
           <unit-entry name="noname-applicationContext.xml@1276" value="148abf31-4434-461a-85a0-177c5f76df70" />
           <unit-entry name="noname-applicationContext.xml@1286" value="148abf31-4434-461a-85a0-177c5f76df70" />
         </datasource-map>

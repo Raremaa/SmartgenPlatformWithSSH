@@ -11,7 +11,10 @@
         <param-name>contextConfigLocation</param-name>
         <param-value>classpath:applicationContext.xml</param-value>
     </context-param>
-
+    <context-param>
+        <param-name/>
+        <param-value/>
+    </context-param>
     <!--解决no-session问题，延长session1的生命周期使懒加载可以正常运行-->
     <filter>
         <filter-name>openSessionInView</filter-name>

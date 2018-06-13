@@ -1,7 +1,6 @@
 package com.zing.pojo;
 
 import com.zing.base.pojo.BasePojo;
-import java.sql.Timestamp;
 import java.util.HashSet;
 import java.util.Set;
 

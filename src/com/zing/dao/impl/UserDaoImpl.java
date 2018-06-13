@@ -23,6 +23,7 @@ public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
         super.setSessionFactory(sessionFactory);
     }
 
+
     @Override
     /**
      * 根据id查询
@@ -63,6 +64,7 @@ public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
     @Override
     /**
      * 条件查询
+     * 这里未使用通用查询接口数据 后续需优化
      */
     public List<User> getUserList(final String condition) throws Exception {
         return this.getHibernateTemplate().execute(new HibernateCallback<List<User>>() {
@@ -88,6 +90,21 @@ public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
     public Integer save(User user) throws Exception {
         Integer id = (Integer) this.getHibernateTemplate().save(user);
         return id;
+    }
+
+    @Override
+    public User login(final String userPhone,final String userPassword) throws Exception {
+        return this.getHibernateTemplate().execute(new HibernateCallback<User>() {
+            @Override
+            public User doInHibernate(Session session) throws HibernateException {
+                String hql = "SELECT new User(userRealName,userName,userPhone,userPassword,userSex,userHeadPortrait," +
+                        "userIdNumber,userLocation,userIdentity) FROM User where userPhone = ? and userPassword = ?";
+                Query query = session.createQuery(hql);
+                query.setParameter(0,userPhone);
+                query.setParameter(1,userPassword);
+                return (User) query.uniqueResult();
+            }
+        });
     }
 
     //    @Override

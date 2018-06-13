@@ -7,7 +7,7 @@ import java.sql.Timestamp;
  * 商品评价信息表
  * 与产品表多对一关系
  * 与用户表多对一关系
- * 与订单表一对一关系 关系交给订单表维护
+ * 与订单详情表一对一关系 关系交给商品评价信息表维护
  */
 public class Productevalute extends BasePojo {
 
@@ -20,6 +20,7 @@ public class Productevalute extends BasePojo {
     private Product product;//外键关系-Product_id-产品表-多对一
     private User user;//外键关系-User_id-用户表-多对一
     private Purchase purchase;//外键关系-订单表-一对一
+    private Purchaseitem purchaseitem;//外键关系-Purchaseitem_id-订单详情表-一对一
 
     public Integer getProevaluteNo() {
         return proevaluteNo;
@@ -91,5 +92,13 @@ public class Productevalute extends BasePojo {
 
     public void setPurchase(Purchase purchase) {
         this.purchase = purchase;
+    }
+
+    public Purchaseitem getPurchaseitem() {
+        return purchaseitem;
+    }
+
+    public void setPurchaseitem(Purchaseitem purchaseitem) {
+        this.purchaseitem = purchaseitem;
     }
 }
