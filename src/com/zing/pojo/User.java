@@ -1,6 +1,5 @@
 package com.zing.pojo;
 
-import com.zing.base.pojo.BasePojo;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -13,8 +12,9 @@ import java.util.Set;
  * 与收藏表一对多关系
  * 与购物车表一对多关系
  */
-public class User extends BasePojo {
+public class User{
 
+    private Integer id;//主键Id
     private String userRealName;//用户真实姓名
     private String userName;//用户账户名
     private String userPhone;//用户手机号 唯一约束
@@ -30,6 +30,14 @@ public class User extends BasePojo {
     private Set<Browsinghistory> browsinghistories = new HashSet<Browsinghistory>();//外键关系-浏览历史表-一对多
     private Set<Collectioninfo> collectioninfos = new HashSet<Collectioninfo>();//外键关系-收藏表-一对多
     private Set<Shoppingcart> shoppingcarts = new HashSet<Shoppingcart>();//外键关系-购物车表-一对多
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public String getUserRealName() {
         return userRealName;
@@ -166,7 +174,8 @@ public class User extends BasePojo {
                 '}';
     }
 
-    public User(String userRealName, String userName, String userPhone, String userPassword, Integer userSex, String userHeadPortrait, String userIdNumber, String userLocation, Integer userIdentity) {
+    public User(Integer id,String userRealName, String userName, String userPhone, String userPassword, Integer userSex, String userHeadPortrait, String userIdNumber, String userLocation, Integer userIdentity) {
+        this.id = id;
         this.userRealName = userRealName;
         this.userName = userName;
         this.userPhone = userPhone;

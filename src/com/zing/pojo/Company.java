@@ -1,7 +1,5 @@
 package com.zing.pojo;
 
-import com.zing.base.pojo.BasePojo;
-
 import java.util.HashSet;
 import java.util.Set;
 
@@ -9,8 +7,9 @@ import java.util.Set;
  * 公司表
  * 与产品表一对多关系
  */
-public class Company extends BasePojo {
+public class Company{
 
+    private Integer id;//主键Id
     private String companyName;//公司名字
     private String companyUserName;//公司用户名
     private String companyPhone;//公司手机号码
@@ -20,6 +19,14 @@ public class Company extends BasePojo {
     private String companyLocation;//公司所在地
     private Integer companyIdentity;//公司营业执照编号
     private Set<Product> products = new HashSet<Product>();//外键关系-产品表-一对多
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public String getCompanyName() {
         return companyName;
@@ -91,5 +98,8 @@ public class Company extends BasePojo {
 
     public void setProducts(Set<Product> products) {
         this.products = products;
+    }
+
+    public Company() {
     }
 }

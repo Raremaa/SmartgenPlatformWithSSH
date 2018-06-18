@@ -38,7 +38,7 @@
             <one-to-many class="Browsinghistory"/>
         </set>
         <!--一对多关系 一的一方放弃关系维护-->
-        <set name="collectioninfos" inverse="true">
+        <set name="collectioninfos" inverse="true" lazy="false">
             <key column="User_id"/>
             <one-to-many class="Collectioninfo"/>
         </set>

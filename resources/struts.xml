@@ -22,5 +22,25 @@
             <param name="root">datas</param>
         </result>
     </action>
+    <action name="CreativeprojectAction_*" class="creativeprojectAction" method="{1}">
+        <result type="json">
+            <param name="root">datas</param>
+        </result>
+    </action>
+    <action name="ProductAction_*" class="productAction" method="{1}">
+        <result type="json">
+            <param name="root">datas</param>
+        </result>
+    </action>
+    <action name="CreativeremarkAction_*" class="creativeremarkAction" method="{1}">
+        <result type="json">
+            <param name="root">datas</param>
+        </result>
+    </action>
+    <action name="CollectioninfoAction_*" class="collectioninfoAction" method="{1}">
+        <result type="json">
+            <param name="root">datas</param>
+        </result>
+    </action>
 </package>
 </struts>

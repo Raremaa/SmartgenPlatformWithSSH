@@ -1,7 +1,5 @@
 package com.zing.pojo;
 
-import com.zing.base.pojo.BasePojo;
-import java.sql.Timestamp;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -11,8 +9,9 @@ import java.util.Set;
  * 为兼容web项目,有部分冗余,需后续优化
  * 与产品表一对多关系
  */
-public class Creativeproject extends BasePojo {
+public class Creativeproject{
 
+    private Integer id;//主键Id
     private Integer expertJobNumber;//专家表主键
     private Integer userId;//用户表主键
     private Integer companyId;//公司表主键
@@ -31,6 +30,14 @@ public class Creativeproject extends BasePojo {
     private Integer creprojectEvaluateResult;//专家评估结果
     private String creprojectEvaluateOpinion;//专家评估意见
     private Set<Product> products = new HashSet<Product>();//外键关系-产品表-一对多关系
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public Integer getExpertJobNumber() {
         return expertJobNumber;
@@ -176,7 +183,8 @@ public class Creativeproject extends BasePojo {
         this.products = products;
     }
 
-    public Creativeproject(Integer userId, String creprojectTitle, String creprojectContent, String creprojectLabel, String creprojectPicture, String creprojectVideo, String creprojectPlan, Integer creprojectClassify, Integer creprojectState, Integer creprojectPraise, Date creprojectModifyTime, Date creprojectReleaseTime, Date creprojectEvaluateTime, Integer creprojectEvaluateResult, String creprojectEvaluateOpinion) {
+    public Creativeproject(Integer id,Integer userId, String creprojectTitle, String creprojectContent, String creprojectLabel, String creprojectPicture, String creprojectVideo, String creprojectPlan, Integer creprojectClassify, Integer creprojectState, Integer creprojectPraise, Date creprojectModifyTime, Date creprojectReleaseTime, Date creprojectEvaluateTime, Integer creprojectEvaluateResult, String creprojectEvaluateOpinion) {
+        this.id = id;
         this.userId = userId;
         this.creprojectTitle = creprojectTitle;
         this.creprojectContent = creprojectContent;

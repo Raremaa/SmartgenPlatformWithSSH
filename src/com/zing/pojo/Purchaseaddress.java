@@ -1,13 +1,12 @@
 package com.zing.pojo;
 
-import com.zing.base.pojo.BasePojo;
-
 /**
  * 收货地址表
  * 与用户表多对一关系
  */
-public class Purchaseaddress extends BasePojo {
+public class Purchaseaddress{
 
+    private Integer id;//主键Id
     private Byte puraddressIsChoice;//是否为默认地址 1-是 2-不是
     private String puraddressUserName;//收货人姓名
     private String puraddressAddress;//收货地址
@@ -16,6 +15,14 @@ public class Purchaseaddress extends BasePojo {
     private String puraddressProvince;//收货人所在省份
     private String puraddressCity;//收货人所在城市
     private User user;//外键关联-User_id-用户表-多对一
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public User getUser() {
         return user;

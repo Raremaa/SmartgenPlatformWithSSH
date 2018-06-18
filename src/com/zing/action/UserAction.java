@@ -20,7 +20,7 @@ import java.util.Map;
 public class UserAction extends ActionSupport implements ModelDriven<User>{
 
     private User user = new User();
-    private String condition;
+    private String condition;//条件
     @Autowired
     private UserServiceDao userServiceDao;
     private Map<String,Object> datas = new HashMap<String,Object>(0);
@@ -61,7 +61,7 @@ public class UserAction extends ActionSupport implements ModelDriven<User>{
         JsonResult jsonResult = new JsonResult();
         List<User> list = new ArrayList<User>(0);
         try {
-            User user = userServiceDao.login(this.user.getUserName(),this.user.getUserPassword());
+            User user = userServiceDao.login(this.user.getUserPhone(),this.user.getUserPassword());
             if(user == null){
                 jsonResult.setMsg("用户不存在或密码错误");
             }else{

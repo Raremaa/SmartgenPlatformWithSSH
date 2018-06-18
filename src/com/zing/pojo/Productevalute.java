@@ -1,6 +1,6 @@
 package com.zing.pojo;
 
-import com.zing.base.pojo.BasePojo;
+
 import java.sql.Timestamp;
 
 /**
@@ -9,8 +9,9 @@ import java.sql.Timestamp;
  * 与用户表多对一关系
  * 与订单详情表一对一关系 关系交给商品评价信息表维护
  */
-public class Productevalute extends BasePojo {
+public class Productevalute{
 
+    private Integer id;//主键Id
     private Integer proevaluteNo;//评价编号
     private String proevaluteTitle;//评价标题
     private Byte proevaluteStar;//评价等地 0-差评 1-中评 2-好评
@@ -21,6 +22,14 @@ public class Productevalute extends BasePojo {
     private User user;//外键关系-User_id-用户表-多对一
     private Purchase purchase;//外键关系-订单表-一对一
     private Purchaseitem purchaseitem;//外键关系-Purchaseitem_id-订单详情表-一对一
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public Integer getProevaluteNo() {
         return proevaluteNo;

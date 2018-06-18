@@ -1,7 +1,5 @@
 package com.zing.pojo;
 
-import com.zing.base.pojo.BasePojo;
-
 import java.util.HashSet;
 import java.util.Set;
 
@@ -15,8 +13,9 @@ import java.util.Set;
  * 与收藏表一对多关系
  * 与购物车表多对多关系 通过中间表shoppingcart_product_relation表示关系 由购物车表维护关系
  */
-public class Product extends BasePojo {
+public class Product{
 
+    private Integer id;//主键Id
     private Integer productNo;//产品编号
     private String productName;//产品名
     private Double productPrice;//产品价格
@@ -43,6 +42,14 @@ public class Product extends BasePojo {
     private Set<Browsinghistory> browsinghistories = new HashSet<Browsinghistory>();//外键关系-浏览历史表-一对多
     private Set<Collectioninfo> collectioninfos = new HashSet<Collectioninfo>();//外键关系-收藏表-一对多
     private Set<Shoppingcart> shoppingcarts = new HashSet<Shoppingcart>();//外键关系-shoppingcart_product_relation表-购物车表-多对多
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public Integer getProductNo() {
         return productNo;
@@ -250,5 +257,63 @@ public class Product extends BasePojo {
 
     public void setShoppingcarts(Set<Shoppingcart> shoppingcarts) {
         this.shoppingcarts = shoppingcarts;
+    }
+
+    public Product(Integer id,Integer productNo, String productName, Double productPrice, Byte productClassify, String productLabel, String productPicture, Byte productStatus, String productMsg, Double productOriginPrice, Double productFreight, String productCount, String productSell, String productBestCount, String productMiddleCount, String productBadCount, String productRequireMoney, String productCurrentMoney, Double productCountPrice, String productOneMsg) {
+        this.id = id;
+        this.productNo = productNo;
+        this.productName = productName;
+        this.productPrice = productPrice;
+        this.productClassify = productClassify;
+        this.productLabel = productLabel;
+        this.productPicture = productPicture;
+        this.productStatus = productStatus;
+        this.productMsg = productMsg;
+        this.productOriginPrice = productOriginPrice;
+        this.productFreight = productFreight;
+        this.productCount = productCount;
+        this.productSell = productSell;
+        this.productBestCount = productBestCount;
+        this.productMiddleCount = productMiddleCount;
+        this.productBadCount = productBadCount;
+        this.productRequireMoney = productRequireMoney;
+        this.productCurrentMoney = productCurrentMoney;
+        this.productCountPrice = productCountPrice;
+        this.ProductOneMsg = productOneMsg;
+    }
+
+    public Product() {
+    }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "productNo=" + productNo +
+                ", productName='" + productName + '\'' +
+                ", productPrice=" + productPrice +
+                ", productClassify=" + productClassify +
+                ", productLabel='" + productLabel + '\'' +
+                ", productPicture='" + productPicture + '\'' +
+                ", productStatus=" + productStatus +
+                ", productMsg='" + productMsg + '\'' +
+                ", productOriginPrice=" + productOriginPrice +
+                ", productFreight=" + productFreight +
+                ", productCount='" + productCount + '\'' +
+                ", productSell='" + productSell + '\'' +
+                ", productBestCount='" + productBestCount + '\'' +
+                ", productMiddleCount='" + productMiddleCount + '\'' +
+                ", productBadCount='" + productBadCount + '\'' +
+                ", productRequireMoney='" + productRequireMoney + '\'' +
+                ", productCurrentMoney='" + productCurrentMoney + '\'' +
+                ", productCountPrice=" + productCountPrice +
+                ", ProductOneMsg='" + ProductOneMsg + '\'' +
+                ", creativeproject=" + creativeproject +
+                ", company=" + company +
+                ", productevalutes=" + productevalutes +
+                ", purchaseitems=" + purchaseitems +
+                ", browsinghistories=" + browsinghistories +
+                ", collectioninfos=" + collectioninfos +
+                ", shoppingcarts=" + shoppingcarts +
+                '}';
     }
 }

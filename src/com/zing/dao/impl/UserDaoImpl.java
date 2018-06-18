@@ -70,7 +70,7 @@ public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
         return this.getHibernateTemplate().execute(new HibernateCallback<List<User>>() {
             @Override
             public List<User> doInHibernate(Session session) throws HibernateException {
-                String hql = "SELECT new User(userRealName,userName,userPhone,userPassword,userSex,userHeadPortrait," +
+                String hql = "SELECT new User(id,userRealName,userName,userPhone,userPassword,userSex,userHeadPortrait," +
                         "userIdNumber,userLocation,userIdentity) FROM User WHERE 1=1";
                 if(condition != null){
                     hql += " and " +condition;
@@ -92,12 +92,15 @@ public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
         return id;
     }
 
+    /**
+     * 登录验证
+     */
     @Override
     public User login(final String userPhone,final String userPassword) throws Exception {
         return this.getHibernateTemplate().execute(new HibernateCallback<User>() {
             @Override
             public User doInHibernate(Session session) throws HibernateException {
-                String hql = "SELECT new User(userRealName,userName,userPhone,userPassword,userSex,userHeadPortrait," +
+                String hql = "SELECT new User(id,userRealName,userName,userPhone,userPassword,userSex,userHeadPortrait," +
                         "userIdNumber,userLocation,userIdentity) FROM User where userPhone = ? and userPassword = ?";
                 Query query = session.createQuery(hql);
                 query.setParameter(0,userPhone);

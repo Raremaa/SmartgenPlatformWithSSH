@@ -1,10 +1,10 @@
 import com.zing.dao.CreativeprojectDao;
 import com.zing.dao.UserDao;
 import com.zing.dao.impl.UserDaoImpl;
-import com.zing.pojo.Creativeproject;
-import com.zing.pojo.User;
-import com.zing.queryParam.CreativeprojectQueryParam;
-import com.zing.serviceDao.UserServiceDao;
+import com.zing.pojo.*;
+import com.zing.queryparam.CollectioninfoQueryParam;
+import com.zing.queryparam.ProductQueryParam;
+import com.zing.serviceDao.*;
 import com.zing.serviceDao.impl.UserServiceDaoImpl;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -33,18 +33,34 @@ public class FunctionTest {
         userServiceDao.save(user);
     }
 
-//    @Autowired
-//    private CreativeprojectDao creativeprojectDao;
-//    @Test
-//    public void funUser2()throws Exception{
-//        CreativeprojectQueryParam queryParam = new CreativeprojectQueryParam();
-//        queryParam.setCondition("1=1");
-//        queryParam.setOrderBy("userId");
-//        queryParam.setOrderByInTurn("DESC");
-//        queryParam.setPage(3);
-//        queryParam.setPageSize(3);
-//        List<Creativeproject> creativeproject = creativeprojectDao.getCreativeprojectList(queryParam);
-//        System.err.println(creativeproject.get(0));
-//        System.err.println(creativeproject.size());
-//    }
+    @Autowired
+    private CreativeprojectServiceDao creativeprojectServiceDao;
+    @Test
+    public void funProduct1() throws Exception{
+        Creativeproject creativeproject = new Creativeproject();
+        creativeproject.setId(1);
+        creativeproject.setCreprojectContent("实例");
+        System.err.println(creativeprojectServiceDao.update(creativeproject));
+    }
+
+    @Autowired
+    private CreativeremarkServiceDao creativeremarkServiceDao;
+    @Test
+    public void fun1() throws Exception{
+        Integer userId = 2;
+        Integer creProjectId = 2;
+        Creativeremark c = creativeremarkServiceDao.getByUserAndCreProject(userId,creProjectId);
+        System.err.println(c);
+    }
+
+    @Autowired
+    private CollectioninfoServiceDao collectioninfoServiceDao;
+
+    @Test
+    public void fun3() throws Exception{
+        CollectioninfoQueryParam queryParam = new CollectioninfoQueryParam();
+        queryParam.setCondition("1=1");
+        List<Collectioninfo> list = collectioninfoServiceDao.getList(queryParam);
+        System.err.println(list.get(0).toString());
+    }
 }

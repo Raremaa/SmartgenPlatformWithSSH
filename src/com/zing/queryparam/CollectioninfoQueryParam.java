@@ -1,9 +1,9 @@
-package com.zing.base.queryParam;
+package com.zing.queryparam;
 
 /**
- * 查询通用接口数据
+ * 收藏表通用查询接口数据
  */
-public class BaseQueryParam {
+public class CollectioninfoQueryParam {
     private String condition;//条件
     private String orderBy;//排序 按什么排序
     private String orderByInTurn;//升序或降序 接受desc/DESC 或 asc/ASC

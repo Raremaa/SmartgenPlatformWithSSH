@@ -1,6 +1,5 @@
 package com.zing.pojo;
 
-import com.zing.base.pojo.BasePojo;
 import java.sql.Timestamp;
 
 /**
@@ -9,8 +8,9 @@ import java.sql.Timestamp;
  * 与产品表多对一关系
  * 与商品评价信息表一对一关系 关系交给商品评价信息表维护
  */
-public class Purchaseitem extends BasePojo {
+public class Purchaseitem{
 
+    private Integer id;//主键Id
     private Integer purchaseitemCount;//商品购买数量
     private String purchaseitemMsg;//买家留言
     private Timestamp purchaseitemTime;//发货时间
@@ -22,6 +22,14 @@ public class Purchaseitem extends BasePojo {
     private Purchase purchase;//外键关系-Purchase_id-订单表-多对一
     private Product product;//外键关系-Product_id-产品表-多对一
     private Productevalute productevalute;//外键关系-商品评价信息表-一对一
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public Integer getPurchaseitemCount() {
         return purchaseitemCount;

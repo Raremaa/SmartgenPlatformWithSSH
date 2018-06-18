@@ -1,6 +1,5 @@
 package com.zing.pojo;
 
-import com.zing.base.pojo.BasePojo;
 import java.sql.Timestamp;
 import java.util.HashSet;
 import java.util.Set;
@@ -10,8 +9,9 @@ import java.util.Set;
  * 与用户表多对一关系
  * 与订单详情表一对多关系
  */
-public class Purchase extends BasePojo {
+public class Purchase{
 
+    private Integer id;//主键Id
     private String purchaseNo;//订单编号
     private Timestamp purchasePaymentTime;//支付时间
     private String purchasePatternOfPayment;//支付方式
@@ -19,6 +19,14 @@ public class Purchase extends BasePojo {
     private Double purchasePrice;//产品交易总价
     private Set<Purchaseitem> purchaseitems = new HashSet<Purchaseitem>();//外键关系-订单详情表-一对多
     private User user;//外键关系-User_id-用户表-多对一
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public String getPurchaseNo() {
         return purchaseNo;
