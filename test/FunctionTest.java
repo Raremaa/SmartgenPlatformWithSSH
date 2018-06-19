@@ -1,3 +1,4 @@
+import com.zing.dao.CollectioninfoDao;
 import com.zing.dao.CreativeprojectDao;
 import com.zing.dao.UserDao;
 import com.zing.dao.impl.UserDaoImpl;
@@ -54,13 +55,43 @@ public class FunctionTest {
     }
 
     @Autowired
-    private CollectioninfoServiceDao collectioninfoServiceDao;
+    private CollectioninfoDao collectioninfoDao;
+
+
+    @Autowired
+    private UserDao userDao;
+    @Test
+    public void fun4() throws Exception{
+        User user = userDao.getUserById(6);
+        System.err.println(user);
+    }
+
 
     @Test
-    public void fun3() throws Exception{
+    public void fun5() throws Exception{
         CollectioninfoQueryParam queryParam = new CollectioninfoQueryParam();
-        queryParam.setCondition("1=1");
-        List<Collectioninfo> list = collectioninfoServiceDao.getList(queryParam);
-        System.err.println(list.get(0).toString());
+        queryParam.setCondition("user.id =2");
+        System.err.println(collectioninfoDao.getCount(queryParam));
+    }
+
+    @Autowired
+    private CollectioninfoServiceDao collectioninfoServiceDao;
+    @Test
+    public void fun6() throws Exception{
+        Collectioninfo c = new Collectioninfo();
+        Product p = new Product();
+        p.setId(1);
+        User u = new User();
+        u.setId(7);
+        c.setUser(u);
+        c.setProduct(p);
+        System.err.println(collectioninfoServiceDao.save(c));
+    }
+
+    @Test
+    public void fun7()throws Exception{
+        User u = new User();
+        u.setId(1);
+        System.err.println(collectioninfoDao.getProductByUserId(1));
     }
 }

@@ -4,6 +4,7 @@ import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 import com.zing.json.JsonResult;
 import com.zing.pojo.Collectioninfo;
+import com.zing.pojo.Product;
 import com.zing.queryparam.CollectioninfoQueryParam;
 import com.zing.serviceDao.CollectioninfoServiceDao;
 import com.zing.util.JsonResultForMapUtil;
@@ -23,14 +24,19 @@ public class CollectioninfoAction extends ActionSupport implements ModelDriven<C
     private Collectioninfo collectioninfo = new Collectioninfo();
     private Map<String,Object> datas = new HashMap<String,Object>(0);
     private CollectioninfoQueryParam queryParam;
+    private Integer userId;
     @Autowired
     private CollectioninfoServiceDao collectioninfoServiceDao;
 
     @JSON(serialize = false)
+    /**
+     * 条件查询
+     * 暂未实现 后续实现
+     */
     public String findList(){
         JsonResult jsonResult = new JsonResult();
         try {
-            List<Collectioninfo> list = collectioninfoServiceDao.getList(this.queryParam);
+            List<Object[]> list = collectioninfoServiceDao.getList(this.queryParam);
             jsonResult.setMsg("查询成功");
             jsonResult.setTotal(list.size());
             jsonResult.setDatas(list);
@@ -45,6 +51,10 @@ public class CollectioninfoAction extends ActionSupport implements ModelDriven<C
         }
     }
 
+    /**
+     * 保存
+     * @return
+     */
     public String save(){
         JsonResult jsonResult = new JsonResult();
         try {
@@ -74,7 +84,50 @@ public class CollectioninfoAction extends ActionSupport implements ModelDriven<C
         }
     }
 
+    /**
+     * 根据条件查询符合条件的数据总条数
+     * 基于收藏表通用查询接口数据
+     */
+    @JSON(serialize = false)
+    public String getCount(){
+        JsonResult jsonResult = new JsonResult();
+        try {
+            Long temp = collectioninfoServiceDao.getCount(queryParam);
+            jsonResult.setMsg("查询成功");
+            jsonResult.setSuccess(true);
+            jsonResult.setTotal(temp.intValue());
+        } catch (Exception e) {
+            jsonResult.setMsg(e.toString());
+            e.printStackTrace();
+        }finally {
+            JsonResultForMapUtil.packageClass(datas,jsonResult);
+            return SUCCESS;
+        }
+    }
 
+    /**
+     * 根据用户id获取用户收藏的商品
+     */
+    public String getProductByUserId(){
+        JsonResult jsonResult = new JsonResult();
+        try {
+            if(this.userId == null){
+                jsonResult.setMsg("用户信息未指定！");
+            }else {
+                List<Product> list = collectioninfoServiceDao.getProductByUserId(this.userId);
+                jsonResult.setMsg("查询成功");
+                jsonResult.setSuccess(true);
+                jsonResult.setTotal(list.size());
+                jsonResult.setDatas(list);
+            }
+        } catch (Exception e) {
+            jsonResult.setMsg(e.toString());
+            e.printStackTrace();
+        }finally {
+            JsonResultForMapUtil.packageClass(datas,jsonResult);
+            return SUCCESS;
+        }
+    }
 
     @Override
     public Collectioninfo getModel() {
@@ -95,5 +148,13 @@ public class CollectioninfoAction extends ActionSupport implements ModelDriven<C
 
     public void setQueryParam(CollectioninfoQueryParam queryParam) {
         this.queryParam = queryParam;
+    }
+
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 }

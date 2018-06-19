@@ -316,4 +316,12 @@ public class Product{
                 ", shoppingcarts=" + shoppingcarts +
                 '}';
     }
+
+    public Product(Integer id, String productName, Double productPrice, String productPicture, String productOneMsg) {
+        this.id = id;
+        this.productName = productName;
+        this.productPrice = productPrice;
+        this.productPicture = productPicture;
+        ProductOneMsg = productOneMsg;
+    }
 }
