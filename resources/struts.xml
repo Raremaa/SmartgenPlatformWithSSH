@@ -42,5 +42,15 @@
             <param name="root">datas</param>
         </result>
     </action>
+    <action name="PurchaseAction_*" class="purchaseAction" method="{1}">
+        <result type="json">
+            <param name="root">datas</param>
+        </result>
+    </action>
+    <action name="PurchaseaddressAction_*" class="purchaseaddressAction" method="{1}">
+        <result type="json">
+            <param name="root">datas</param>
+        </result>
+    </action>
 </package>
 </struts>

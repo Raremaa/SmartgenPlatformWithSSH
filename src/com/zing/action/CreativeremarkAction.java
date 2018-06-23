@@ -43,6 +43,8 @@ public class CreativeremarkAction extends ActionSupport{
                 jsonResult.setTotal(0);
                 jsonResult.setPageSize(0);
                 jsonResult.setSuccess(true);
+                JsonResultForMapUtil.packageClass(datas,jsonResult);
+                return SUCCESS;
             }
             List<Creativeremark> list = new ArrayList<Creativeremark>(0);
             list.add(creativeremark);

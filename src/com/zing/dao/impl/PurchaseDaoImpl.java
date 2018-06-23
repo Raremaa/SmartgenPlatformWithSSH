@@ -1,13 +1,11 @@
 package com.zing.dao.impl;
 
-import com.zing.dao.ProductDao;
-import com.zing.pojo.Product;
-import com.zing.queryparam.ProductQueryParam;
+import com.zing.dao.PurchaseDao;
+import com.zing.pojo.Purchase;
+import com.zing.queryparam.PurchaseQueryParam;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.criterion.DetachedCriteria;
-import org.hibernate.criterion.Restrictions;
 import org.hibernate.query.Query;
 import org.springframework.orm.hibernate5.HibernateCallback;
 import org.springframework.orm.hibernate5.support.HibernateDaoSupport;
@@ -17,22 +15,19 @@ import javax.annotation.Resource;
 import java.io.Serializable;
 import java.util.List;
 
-@Repository("productDao")
-public class ProductDaoImpl extends HibernateDaoSupport implements ProductDao {
-    @Override
+@Repository("purchaseDao")
+public class PurchaseDaoImpl extends HibernateDaoSupport implements PurchaseDao {
+
     /**
      * 条件查询
-     * 基于产品表通用查询接口数据
+     * 基于订单表通用查询接口数据
      */
-    public List<Product> getProductList(ProductQueryParam queryParam) throws Exception {
-        return this.getHibernateTemplate().execute(new HibernateCallback<List<Product>>() {
+    @Override
+    public List<Purchase> getList(PurchaseQueryParam queryParam) throws Exception {
+        return this.getHibernateTemplate().execute(new HibernateCallback<List<Purchase>>() {
             @Override
-            public List<Product> doInHibernate(Session session) throws HibernateException {
-                String hql = "select new Product (id,productNo,productName,productPrice,productClassify,productLabel," +
-                        "productPicture,productStatus,productMsg,productOriginPrice,productFreight,productCount," +
-                        "productSell,productBestCount,productMiddleCount,productBadCount,productRequireMoney," +
-                        "productCurrentMoney,productCountPrice,productOneMsg) " +
-                        "from Product where 1=1";
+            public List<Purchase> doInHibernate(Session session) throws HibernateException {
+                String hql ="select new Purchase (id,purchaseNo,purchasePaymentTime,purchasePatternOfPayment,purchaseState,purchasePrice)from Purchase where 1=1";
                 if(queryParam.getCondition() != null){
                     hql += (" and " + queryParam.getCondition());
                 }
@@ -53,29 +48,18 @@ public class ProductDaoImpl extends HibernateDaoSupport implements ProductDao {
                         query.setMaxResults(queryParam.getPageSize());
                     }
                 }
-                List<Product> list = query.list();
+                List<Purchase> list = query.list();
                 return list;
             }
         });
     }
 
-    @Override
     /**
      * 保存
      */
-    public Serializable save(Product product) throws Exception {
-        return this.getHibernateTemplate().save(product);
-    }
-
-    /**
-     * id查询
-     */
     @Override
-    public Product getById(Integer id) throws Exception {
-        DetachedCriteria dc = DetachedCriteria.forClass(Product.class);
-        dc.add(Restrictions.eq("id",id));
-        List<Product> products = (List<Product>) this.getHibernateTemplate().findByCriteria(dc);
-        return products.get(0);
+    public Serializable save(Purchase purchase) throws Exception {
+        return this.getHibernateTemplate().save(purchase);
     }
 
 

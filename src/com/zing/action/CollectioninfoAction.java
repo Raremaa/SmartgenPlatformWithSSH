@@ -67,6 +67,15 @@ public class CollectioninfoAction extends ActionSupport implements ModelDriven<C
                     if(collectioninfo.getProduct() == null){
                         jsonResult.setMsg("产品信息不可为空");
                     }else{
+                        //由于收藏表的不可重复性 这里不可以重复收藏
+                        //故保存之前先判断苦衷是否有相同信息
+                        CollectioninfoQueryParam q = new CollectioninfoQueryParam();
+                        q.setCondition("user.id="+collectioninfo.getUser().getId() + " and "+"product.id="+collectioninfo.getProduct().getId());
+                        if(collectioninfoServiceDao.getCount(q) !=0){
+                            jsonResult.setMsg("您已收藏！");
+                            JsonResultForMapUtil.packageClass(datas,jsonResult);
+                            return SUCCESS;
+                        }
                         Integer flag = collectioninfoServiceDao.save(this.collectioninfo);
                         jsonResult.setMsg("添加成功");
                         jsonResult.setSuccess(true);

@@ -7,10 +7,12 @@ import com.zing.pojo.Product;
 import com.zing.queryparam.ProductQueryParam;
 import com.zing.serviceDao.ProductServiceDao;
 import com.zing.util.JsonResultForMapUtil;
+import org.apache.struts2.json.annotations.JSON;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -29,6 +31,7 @@ public class ProductAction extends ActionSupport implements ModelDriven<Product>
      * 条件查询
      * 基于产品表通用查询接口数据
      */
+    @JSON(serialize = false)
     public String getProductList(){
         JsonResult jsonResult = new JsonResult();
         try {
@@ -47,6 +50,23 @@ public class ProductAction extends ActionSupport implements ModelDriven<Product>
         return SUCCESS;
     }
 
+    /**
+     * 保存
+     */
+    public String save(){
+        JsonResult jsonResult = new JsonResult();
+        try {
+            productServiceDao.save(this.product);
+            jsonResult.setSuccess(true);
+            jsonResult.setMsg("成功");
+        } catch (Exception e) {
+            jsonResult.setMsg(e.toString());
+            e.printStackTrace();
+        }finally {
+            JsonResultForMapUtil.packageClass(datas,jsonResult);
+            return SUCCESS;
+        }
+    }
     @Override
     public Product getModel() {
         return this.product;

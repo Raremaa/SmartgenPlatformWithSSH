@@ -16,5 +16,9 @@
         <property name="puraddressProvince" column="Puraddress_province"/>
         <property name="puraddressCity" column="Puraddress_city"/>
         <many-to-one name="user" column="User_id" class="User"/>
+        <set name="purchases">
+            <key column="Purchaseaddress_id"/>
+            <one-to-many class="Purchase"/>
+        </set>
     </class>
 </hibernate-mapping>

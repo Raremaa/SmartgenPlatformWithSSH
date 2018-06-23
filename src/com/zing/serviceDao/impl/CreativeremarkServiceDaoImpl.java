@@ -44,6 +44,6 @@ public class CreativeremarkServiceDaoImpl implements CreativeremarkServiceDao {
      * @return 返回该记录在表中的主键id
      */
     public Serializable save(Creativeremark creativeremark) throws Exception {
-        return null;
+        return creativeremarkDao.save(creativeremark);
     }
 }

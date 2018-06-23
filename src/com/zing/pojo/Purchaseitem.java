@@ -15,8 +15,8 @@ public class Purchaseitem{
     private String purchaseitemMsg;//买家留言
     private Timestamp purchaseitemTime;//发货时间
     private String purchaseitemWay;//发货方式(哪家快递 快递/空运)
-    private String purchaseitemSinglePrice;//交易单价
-    private String purchaseitemPrice;//交易总价
+    private Double purchaseitemSinglePrice;//交易单价
+    private Double purchaseitemPrice;//交易总价
     private String purchaseitemName;//商品名(冗余字段)
     private Byte purchaseitemStatus;//订单详情状态 0-未发货(默认) 1-已发货
     private Purchase purchase;//外键关系-Purchase_id-订单表-多对一
@@ -63,19 +63,19 @@ public class Purchaseitem{
         this.purchaseitemWay = purchaseitemWay;
     }
 
-    public String getPurchaseitemSinglePrice() {
+    public Double getPurchaseitemSinglePrice() {
         return purchaseitemSinglePrice;
     }
 
-    public void setPurchaseitemSinglePrice(String purchaseitemSinglePrice) {
+    public void setPurchaseitemSinglePrice(Double purchaseitemSinglePrice) {
         this.purchaseitemSinglePrice = purchaseitemSinglePrice;
     }
 
-    public String getPurchaseitemPrice() {
+    public Double getPurchaseitemPrice() {
         return purchaseitemPrice;
     }
 
-    public void setPurchaseitemPrice(String purchaseitemPrice) {
+    public void setPurchaseitemPrice(Double purchaseitemPrice) {
         this.purchaseitemPrice = purchaseitemPrice;
     }
 

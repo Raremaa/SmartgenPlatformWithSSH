@@ -1,8 +1,12 @@
 package com.zing.pojo;
 
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  * 收货地址表
  * 与用户表多对一关系
+ * 与订单表一对多关系
  */
 public class Purchaseaddress{
 
@@ -15,6 +19,7 @@ public class Purchaseaddress{
     private String puraddressProvince;//收货人所在省份
     private String puraddressCity;//收货人所在城市
     private User user;//外键关联-User_id-用户表-多对一
+    private Set<Purchase> purchases = new HashSet<Purchase>();//外键关联-订单表-一对多
 
     public Integer getId() {
         return id;
@@ -86,5 +91,41 @@ public class Purchaseaddress{
 
     public void setPuraddressCity(String puraddressCity) {
         this.puraddressCity = puraddressCity;
+    }
+
+    public Set<Purchase> getPurchases() {
+        return purchases;
+    }
+
+    public void setPurchases(Set<Purchase> purchases) {
+        this.purchases = purchases;
+    }
+
+    public Purchaseaddress() {
+    }
+
+    public Purchaseaddress(Integer id, Byte puraddressIsChoice, String puraddressUserName, String puraddressAddress, String puraddressUserPhone, String puraddressZipcode, String puraddressProvince, String puraddressCity) {
+        this.id = id;
+        this.puraddressIsChoice = puraddressIsChoice;
+        this.puraddressUserName = puraddressUserName;
+        this.puraddressAddress = puraddressAddress;
+        this.puraddressUserPhone = puraddressUserPhone;
+        this.puraddressZipcode = puraddressZipcode;
+        this.puraddressProvince = puraddressProvince;
+        this.puraddressCity = puraddressCity;
+    }
+
+    @Override
+    public String toString() {
+        return "Purchaseaddress{" +
+                "id=" + id +
+                ", puraddressIsChoice=" + puraddressIsChoice +
+                ", puraddressUserName='" + puraddressUserName + '\'' +
+                ", puraddressAddress='" + puraddressAddress + '\'' +
+                ", puraddressUserPhone='" + puraddressUserPhone + '\'' +
+                ", puraddressZipcode='" + puraddressZipcode + '\'' +
+                ", puraddressProvince='" + puraddressProvince + '\'' +
+                ", puraddressCity='" + puraddressCity + '\'' +
+                '}';
     }
 }
