@@ -22,6 +22,7 @@ public class Purchaseitem{
     private Purchase purchase;//外键关系-Purchase_id-订单表-多对一
     private Product product;//外键关系-Product_id-产品表-多对一
     private Productevalute productevalute;//外键关系-商品评价信息表-一对一
+    private String PurchaseitemPicture;//商品图片(冗余字段)
 
     public Integer getId() {
         return id;
@@ -117,5 +118,26 @@ public class Purchaseitem{
 
     public void setProductevalute(Productevalute productevalute) {
         this.productevalute = productevalute;
+    }
+
+    public String getPurchaseitemPicture() {
+        return PurchaseitemPicture;
+    }
+
+    public void setPurchaseitemPicture(String purchaseitemPicture) {
+        PurchaseitemPicture = purchaseitemPicture;
+    }
+
+    public Purchaseitem(Integer id, Integer purchaseitemCount, String purchaseitemMsg, Double purchaseitemSinglePrice, Double purchaseitemPrice, String purchaseitemName, String purchaseitemPicture) {
+        this.id = id;
+        this.purchaseitemCount = purchaseitemCount;
+        this.purchaseitemMsg = purchaseitemMsg;
+        this.purchaseitemSinglePrice = purchaseitemSinglePrice;
+        this.purchaseitemPrice = purchaseitemPrice;
+        this.purchaseitemName = purchaseitemName;
+        PurchaseitemPicture = purchaseitemPicture;
+    }
+
+    public Purchaseitem() {
     }
 }

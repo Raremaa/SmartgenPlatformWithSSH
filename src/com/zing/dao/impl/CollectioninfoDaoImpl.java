@@ -39,10 +39,10 @@ public class CollectioninfoDaoImpl extends HibernateDaoSupport implements Collec
      * 基于收藏表通用查询接口数据
      * 这里报错 后续检查问题
      */
-    public List<Object[]> getList(CollectioninfoQueryParam queryParam) throws Exception {
-        return this.getHibernateTemplate().execute(new HibernateCallback<List<Object[]>>() {
+    public List<Collectioninfo> getList(CollectioninfoQueryParam queryParam) throws Exception {
+        return this.getHibernateTemplate().execute(new HibernateCallback<List<Collectioninfo>>() {
             @Override
-            public List<Object[]> doInHibernate(Session session) throws HibernateException {
+            public List<Collectioninfo> doInHibernate(Session session) throws HibernateException {
                 String hql ="from Collectioninfo where 1=1";
                 if(queryParam.getCondition() != null){
                     hql += (" and " + queryParam.getCondition());
@@ -64,7 +64,7 @@ public class CollectioninfoDaoImpl extends HibernateDaoSupport implements Collec
                         query.setMaxResults(queryParam.getPageSize());
                     }
                 }
-                List<Object[]> list = query.list();
+                List<Collectioninfo> list = query.list();
                 return list;
             }
         });
@@ -97,7 +97,7 @@ public class CollectioninfoDaoImpl extends HibernateDaoSupport implements Collec
         return this.getHibernateTemplate().execute(new HibernateCallback<List<Product>>() {
             @Override
             public List<Product> doInHibernate(Session session) throws HibernateException {
-                String hql = "select c.product from Collectioninfo c where 1=1 and c.user.id ="+userId;
+                String hql = "from Collectioninfo c where 1=1 and c.user.id ="+userId;
                 Query query = session.createQuery(hql);
                 List<Product> list = query.list();
                 List<Product> result = new ArrayList<Product>(0);
@@ -113,6 +113,22 @@ public class CollectioninfoDaoImpl extends HibernateDaoSupport implements Collec
                 return result;
             }
         });
+    }
+
+    /**
+     * 修改
+     */
+    @Override
+    public void update(Collectioninfo collectioninfo) throws Exception {
+        this.getHibernateTemplate().update(collectioninfo);
+    }
+
+    /**
+     * 删除
+     */
+    @Override
+    public void delete(Collectioninfo collectioninfo) throws Exception {
+       this.getHibernateTemplate().delete(collectioninfo);
     }
 
 

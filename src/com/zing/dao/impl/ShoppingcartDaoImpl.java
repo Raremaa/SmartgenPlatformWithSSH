@@ -1,8 +1,8 @@
 package com.zing.dao.impl;
 
-import com.zing.dao.PurchaseDao;
-import com.zing.pojo.Purchase;
-import com.zing.queryparam.PurchaseQueryParam;
+import com.zing.dao.ShoppingcartDao;
+import com.zing.pojo.Shoppingcart;
+import com.zing.queryparam.ShoppingcartQueryParam;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -10,39 +10,39 @@ import org.hibernate.query.Query;
 import org.springframework.orm.hibernate5.HibernateCallback;
 import org.springframework.orm.hibernate5.support.HibernateDaoSupport;
 import org.springframework.stereotype.Repository;
-
 import javax.annotation.Resource;
 import java.io.Serializable;
 import java.util.List;
 
-@Repository("purchaseDao")
-public class PurchaseDaoImpl extends HibernateDaoSupport implements PurchaseDao {
+@Repository("shoppingcartDao")
+public class ShoppingcartDaoImpl extends HibernateDaoSupport implements ShoppingcartDao {
 
     /**
-     * id查询
+     * 保存
      */
     @Override
-    public List<Purchase> getById(Integer id) throws Exception {
-        return this.getHibernateTemplate().execute(new HibernateCallback<List<Purchase>>() {
-            @Override
-            public List<Purchase> doInHibernate(Session session) throws HibernateException {
-                String hql ="from Purchase where id="+id;
-                Query query = session.createQuery(hql);
-                return query.list();
-            }
-        });
+    public Serializable save(Shoppingcart shoppingcart) throws Exception {
+        return this.getHibernateTemplate().save(shoppingcart);
+    }
+
+    /**
+     * 修改
+     */
+    @Override
+    public void update(Shoppingcart shoppingcart) throws Exception {
+        this.getHibernateTemplate().update(shoppingcart);
     }
 
     /**
      * 条件查询
-     * 基于订单表通用查询接口数据
+     * 基于购物车表通用查询接口数据
      */
     @Override
-    public List<Purchase> getList(PurchaseQueryParam queryParam) throws Exception {
-        return this.getHibernateTemplate().execute(new HibernateCallback<List<Purchase>>() {
+    public List<Shoppingcart> getList(ShoppingcartQueryParam queryParam) throws Exception {
+        return this.getHibernateTemplate().execute(new HibernateCallback<List<Shoppingcart>>() {
             @Override
-            public List<Purchase> doInHibernate(Session session) throws HibernateException {
-                String hql ="select new Purchase (id,purchaseNo,purchasePaymentTime,purchasePatternOfPayment,purchaseState,purchasePrice)from Purchase where 1=1";
+            public List<Shoppingcart> doInHibernate(Session session) throws HibernateException {
+                String hql ="from Shoppingcart where 1=1";
                 if(queryParam.getCondition() != null){
                     hql += (" and " + queryParam.getCondition());
                 }
@@ -63,36 +63,11 @@ public class PurchaseDaoImpl extends HibernateDaoSupport implements PurchaseDao 
                         query.setMaxResults(queryParam.getPageSize());
                     }
                 }
-                List<Purchase> list = query.list();
+                List<Shoppingcart> list = query.list();
                 return list;
             }
         });
     }
-
-    /**
-     * 保存
-     */
-    @Override
-    public Serializable save(Purchase purchase) throws Exception {
-        return this.getHibernateTemplate().save(purchase);
-    }
-
-    /**
-     * 删除
-     */
-    @Override
-    public void delete(Purchase purchase) throws Exception {
-        this.getHibernateTemplate().delete(purchase);
-    }
-
-    /**
-     * 修改
-     */
-    @Override
-    public void update(Purchase purchase) throws Exception {
-        this.getHibernateTemplate().update(purchase);
-    }
-
 
     @Resource(name = "sessionFactory")
     public void setSuperSessionFactory(SessionFactory sessionFactory){

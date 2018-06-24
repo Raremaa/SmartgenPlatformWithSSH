@@ -9,7 +9,9 @@ import java.util.List;
 
 public interface CollectioninfoDao {
     Integer save(Collectioninfo collectioninfo)throws Exception;
-    List<Object[]> getList(CollectioninfoQueryParam queryParam)throws Exception;
+    List<Collectioninfo> getList(CollectioninfoQueryParam queryParam)throws Exception;
     Long getCount(CollectioninfoQueryParam queryParam)throws Exception;
     List<Product> getProductByUserId(Integer userId)throws Exception;
+    void update(Collectioninfo collectioninfo)throws Exception;
+    void delete(Collectioninfo collectioninfo)throws Exception;
 }

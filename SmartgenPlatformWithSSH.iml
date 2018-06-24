@@ -1,6 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module type="JAVA_MODULE" version="4">
   <component name="FacetManager">
+    <facet type="Spring" name="Spring">
+      <configuration>
+        <fileset id="fileset" name="Spring Application Context" removed="false">
+          <file>file://$MODULE_DIR$/resources/applicationContext.xml</file>
+        </fileset>
+      </configuration>
+    </facet>
+    <facet type="hibernate" name="Hibernate">
+      <configuration>
+        <datasource-map>
+          <unit-entry name="noname-applicationContext.xml@1286" value="79fdab2e-5015-49f2-a11d-55e5412146ab" />
+        </datasource-map>
+        <naming-strategy-map>
+          <unit-entry name="noname-applicationContext.xml@1286" />
+        </naming-strategy-map>
+      </configuration>
+    </facet>
     <facet type="web" name="Web">
       <configuration>
         <descriptors>
@@ -11,6 +28,7 @@
         </webroots>
         <sourceRoots>
           <root url="file://$MODULE_DIR$/src" />
+          <root url="file://$MODULE_DIR$/resources" />
         </sourceRoots>
       </configuration>
       <facet type="Struts2" name="Struts 2">
@@ -22,23 +40,6 @@
           <propertiesKeys disabled="false" />
         </configuration>
       </facet>
-    </facet>
-    <facet type="Spring" name="Spring">
-      <configuration>
-        <fileset id="fileset" name="Spring Application Context" removed="false">
-          <file>file://$MODULE_DIR$/resources/applicationContext.xml</file>
-        </fileset>
-      </configuration>
-    </facet>
-    <facet type="hibernate" name="Hibernate">
-      <configuration>
-        <datasource-map>
-          <unit-entry name="noname-applicationContext.xml@1286" value="f4cab88c-1ed2-458e-9e97-4ad4ae71c7ee" />
-        </datasource-map>
-        <naming-strategy-map>
-          <unit-entry name="noname-applicationContext.xml@1286" />
-        </naming-strategy-map>
-      </configuration>
     </facet>
   </component>
   <component name="NewModuleRootManager" inherit-compiler-output="true">

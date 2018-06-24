@@ -16,7 +16,8 @@
         <property name="purchaseitemPrice" column="Purchaseitem_price"/>
         <property name="purchaseitemName" column="Purchaseitem_name"/>
         <property name="purchaseitemStatus" column="purchaseitem_status"/>
-        <many-to-one name="purchase" column="Purchase_id" class="Purchase"/>
+        <property name="purchaseitemPicture" column="Purchaseitem_picture"/>
+        <many-to-one name="purchase" column="Purchase_id" class="Purchase" cascade="save-update"/>
         <many-to-one name="product" column="Product_id" class="Product"/>
         <one-to-one name="productevalute" class="Productevalute" property-ref="purchaseitem"/>
     </class>

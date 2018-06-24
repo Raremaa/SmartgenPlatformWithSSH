@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.Serializable;
+import java.util.List;
 
 @Service("purchaseitemServiceDao")
 public class PurchaseitemServiceDaoImpl implements PurchaseitemServiceDao {
@@ -30,5 +31,21 @@ public class PurchaseitemServiceDaoImpl implements PurchaseitemServiceDao {
     @Override
     public Integer update(Purchaseitem purchaseitem) throws Exception {
         return purchaseItemDao.update(purchaseitem);
+    }
+
+    /**
+     * 根据订单表id查询订单详情
+     */
+    @Override
+    public List<Purchaseitem> getPurchaseitemByPurchaseId(Integer id) throws Exception {
+        return purchaseItemDao.getPurchaseitemByPurchaseId(id);
+    }
+
+    /**
+     * 删除
+     */
+    @Override
+    public void delete(Purchaseitem purchaseitem) throws Exception {
+        purchaseItemDao.delete(purchaseitem);
     }
 }

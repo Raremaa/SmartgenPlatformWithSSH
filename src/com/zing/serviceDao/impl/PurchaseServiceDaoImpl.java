@@ -17,6 +17,14 @@ public class PurchaseServiceDaoImpl implements PurchaseServiceDao {
     private PurchaseDao purchaseDao;
 
     /**
+     * id查询
+     */
+    @Override
+    public List<Purchase> getById(Integer id) throws Exception {
+        return purchaseDao.getById(id);
+    }
+
+    /**
      * 条件查询
      * 基于订单表通用查询接口数据
      */
@@ -31,5 +39,21 @@ public class PurchaseServiceDaoImpl implements PurchaseServiceDao {
     @Override
     public Serializable save(Purchase purchase) throws Exception {
         return purchaseDao.save(purchase);
+    }
+
+    /**
+     * 删除
+     */
+    @Override
+    public void delete(Purchase purchase) throws Exception {
+        purchaseDao.delete(purchase);
+    }
+
+    /**
+     * 修改
+     */
+    @Override
+    public void update(Purchase purchase) throws Exception {
+        purchaseDao.update(purchase);
     }
 }

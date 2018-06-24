@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -36,7 +37,7 @@ public class CollectioninfoAction extends ActionSupport implements ModelDriven<C
     public String findList(){
         JsonResult jsonResult = new JsonResult();
         try {
-            List<Object[]> list = collectioninfoServiceDao.getList(this.queryParam);
+            List<Collectioninfo> list = collectioninfoServiceDao.getList(this.queryParam);
             jsonResult.setMsg("查询成功");
             jsonResult.setTotal(list.size());
             jsonResult.setDatas(list);
@@ -52,10 +53,10 @@ public class CollectioninfoAction extends ActionSupport implements ModelDriven<C
     }
 
     /**
-     * 保存
+     * 收藏信息（无则添加 有则删除）
      * @return
      */
-    public String save(){
+    public String doCollection(){
         JsonResult jsonResult = new JsonResult();
         try {
             if (this.collectioninfo == null){
@@ -67,20 +68,26 @@ public class CollectioninfoAction extends ActionSupport implements ModelDriven<C
                     if(collectioninfo.getProduct() == null){
                         jsonResult.setMsg("产品信息不可为空");
                     }else{
-                        //由于收藏表的不可重复性 这里不可以重复收藏
-                        //故保存之前先判断苦衷是否有相同信息
+                        //先判断是否重复 不重复则添加 重复则删除
                         CollectioninfoQueryParam q = new CollectioninfoQueryParam();
                         q.setCondition("user.id="+collectioninfo.getUser().getId() + " and "+"product.id="+collectioninfo.getProduct().getId());
-                        if(collectioninfoServiceDao.getCount(q) !=0){
-                            jsonResult.setMsg("您已收藏！");
-                            JsonResultForMapUtil.packageClass(datas,jsonResult);
-                            return SUCCESS;
+//                        if(collectioninfoServiceDao.getCount(q) !=0){
+//                            jsonResult.setMsg("您已收藏！");
+//                            JsonResultForMapUtil.packageClass(datas,jsonResult);
+//                            return SUCCESS;
+//                        }
+                        List<Collectioninfo> lc = collectioninfoServiceDao.getList(q);
+                        if(lc.size()!=0){
+                            collectioninfoServiceDao.delete(lc.get(0));
+                            jsonResult.setMsg("删除成功");
+                            jsonResult.setSuccess(true);
+                        }else {
+                            Integer flag = collectioninfoServiceDao.save(this.collectioninfo);
+                            jsonResult.setMsg("添加成功");
+                            jsonResult.setSuccess(true);
+                            jsonResult.setTotal(1);
+                            jsonResult.setPageSize(1);
                         }
-                        Integer flag = collectioninfoServiceDao.save(this.collectioninfo);
-                        jsonResult.setMsg("添加成功");
-                        jsonResult.setSuccess(true);
-                        jsonResult.setTotal(1);
-                        jsonResult.setPageSize(1);
                     }
                 }
             }

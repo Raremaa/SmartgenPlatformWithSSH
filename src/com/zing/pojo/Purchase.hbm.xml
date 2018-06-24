@@ -15,7 +15,7 @@
         <property name="purchasePrice" column="Purchase_price"/>
         <many-to-one name="user" column="User_id" class="User"/>
         <many-to-one name="purchaseaddress" column="Purchaseaddress_id" class="Purchaseaddress"/>
-        <set name="purchaseitems" inverse="true" cascade="save-update">
+        <set name="purchaseitems" inverse="true">
             <key column="Purchase_id"/>
             <one-to-many class="Purchaseitem"/>
         </set>

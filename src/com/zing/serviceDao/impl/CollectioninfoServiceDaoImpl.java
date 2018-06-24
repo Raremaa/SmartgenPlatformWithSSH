@@ -27,7 +27,7 @@ public class CollectioninfoServiceDaoImpl implements CollectioninfoServiceDao {
     /**
      * 条件查询
      */
-    public List<Object[]> getList(CollectioninfoQueryParam queryParam) throws Exception {
+    public List<Collectioninfo> getList(CollectioninfoQueryParam queryParam) throws Exception {
         return collectioninfoDao.getList(queryParam);
     }
 
@@ -45,5 +45,21 @@ public class CollectioninfoServiceDaoImpl implements CollectioninfoServiceDao {
      */
     public List<Product> getProductByUserId(Integer userId) throws Exception {
         return collectioninfoDao.getProductByUserId(userId);
+    }
+
+    /**
+     * 修改信息
+     */
+    @Override
+    public void update(Collectioninfo collectioninfo) throws Exception {
+       collectioninfoDao.update(collectioninfo);
+    }
+
+    /**
+     * 删除
+     */
+    @Override
+    public void delete(Collectioninfo collectioninfo) throws Exception {
+        collectioninfoDao.delete(collectioninfo);
     }
 }
