@@ -140,4 +140,16 @@ public class FunctionTest {
         List<Purchaseaddress> l = purchaseaddressServiceDao.getList(queryParam);
         purchaseaddressServiceDao.delete(l.get(0));
     }
+
+    @Autowired
+    private ShoppingcartServiceDao shoppingcartServiceDao;
+    @Test
+    public void fun12()throws Exception{
+        User u = new User();
+        u.setId(1);
+        u.setUserName("wowowowow");
+        Shoppingcart shoppingcart = new Shoppingcart();
+        shoppingcart.setUser(u);
+        shoppingcartServiceDao.save(shoppingcart);
+    }
 }

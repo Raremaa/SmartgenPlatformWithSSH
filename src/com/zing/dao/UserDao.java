@@ -10,4 +10,5 @@ public interface UserDao {
     List<User> getUserList(String condition) throws Exception;
     Integer save(User user) throws Exception;
     User login(String userPhone,String userPassword) throws Exception;
+    void update(User user)throws Exception;
 }

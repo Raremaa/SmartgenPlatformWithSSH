@@ -10,4 +10,6 @@ public interface ShoppingcartServiceDao {
     Serializable save(Shoppingcart shoppingcart)throws Exception;
     void update(Shoppingcart shoppingcart)throws Exception;
     List<Shoppingcart> getList(ShoppingcartQueryParam queryParam)throws Exception;
+    List<Shoppingcart> getListByUserId(Integer id)throws Exception;
+    void delete(Shoppingcart shoppingcart)throws Exception;
 }

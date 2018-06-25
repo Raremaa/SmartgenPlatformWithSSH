@@ -20,5 +20,22 @@ public class test {
 
     @Test
     public void fun2() throws Exception{
+        StringBuilder sb = new StringBuilder(" ");
+        if(sb == null){
+            System.err.println("sb是null");
+        }else{
+            System.err.println(1);
+        }
+        if(sb.toString() == ""){
+            System.err.println("空串");
+        }else{
+            System.err.println(2);
+        }
+        if(sb.toString() == null){
+            System.err.println("字符串为空");
+        }else {
+            System.err.println(3);
+        }
+        System.err.println(sb.toString());
     }
 }

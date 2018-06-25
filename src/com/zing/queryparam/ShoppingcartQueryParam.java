@@ -1,9 +1,9 @@
 package com.zing.queryparam;
 
 /**
- * 创意项目通用查询接口数据
+ * 购物车通用查询接口数据
  */
-public class CreQueryParam {
+public class ShoppingcartQueryParam {
     private String condition;//条件
     private String orderBy;//排序 按什么排序
     private String orderByInTurn;//升序或降序 接受desc/DESC 或 asc/ASC

@@ -130,6 +130,63 @@ public class UserAction extends ActionSupport implements ModelDriven<User>{
         }
     }
 
+    /**
+     * 修改用户信息
+     * 只会修改非null信息
+     */
+    public String updateUser(){
+        JsonResult jsonResult = new JsonResult();
+        if(user.getId() == null){
+            jsonResult.setMsg("请传入用户信息！");
+            JsonResultForMapUtil.packageClass(datas,jsonResult);
+            return SUCCESS;
+        }
+        try {
+            User u = userServiceDao.getUserById(user.getId());
+            if(u == null){
+                jsonResult.setMsg("待修改用户信息不存在！");
+                JsonResultForMapUtil.packageClass(datas,jsonResult);
+                return SUCCESS;
+            }
+            if(user.getUserRealName() != null){
+                u.setUserRealName(user.getUserRealName());
+            }
+            if(user.getUserName() != null){
+                u.setUserName(user.getUserName());
+            }
+            if(user.getUserPhone() != null){
+                u.setUserPhone(user.getUserPhone());
+            }
+            if(user.getUserPassword() != null){
+                u.setUserPassword(user.getUserPhone());
+            }
+            if(user.getUserSex() != null){
+                u.setUserSex(user.getUserSex());
+            }
+            if(user.getUserHeadPortrait() != null){
+                u.setUserHeadPortrait(user.getUserHeadPortrait());
+            }
+            if(user.getUserIdNumber() != null){
+                u.setUserIdNumber(user.getUserIdNumber());
+            }
+            if(user.getUserLocation() != null){
+                u.setUserLocation(user.getUserLocation());
+            }
+            if(user.getUserIdentity() != null){
+                u.setUserIdentity(user.getUserIdentity());
+            }
+            userServiceDao.update(u);
+            jsonResult.setMsg("修改成功！");
+            jsonResult.setSuccess(true);
+        } catch (Exception e) {
+            jsonResult.setMsg(e.toString());
+            e.printStackTrace();
+        }finally {
+            JsonResultForMapUtil.packageClass(datas,jsonResult);
+            return SUCCESS;
+        }
+    }
+
     @Override
     public User getModel() {
         return this.user;

@@ -75,6 +75,9 @@ public class ProductDaoImpl extends HibernateDaoSupport implements ProductDao {
         DetachedCriteria dc = DetachedCriteria.forClass(Product.class);
         dc.add(Restrictions.eq("id",id));
         List<Product> products = (List<Product>) this.getHibernateTemplate().findByCriteria(dc);
+        if(products == null || products.size() == 0){
+            return null;
+        }
         return products.get(0);
     }
 

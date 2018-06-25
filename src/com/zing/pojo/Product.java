@@ -11,7 +11,7 @@ import java.util.Set;
  * 与订单详情表一对多关系
  * 与浏览历史表一对多关系
  * 与收藏表一对多关系
- * 与购物车表多对多关系 通过中间表shoppingcart_product_relation表示关系 由购物车表维护关系
+ * 与购物车表一对多关系
  */
 public class Product{
 
@@ -41,7 +41,7 @@ public class Product{
     private Set<Purchaseitem> purchaseitems = new HashSet<Purchaseitem>();//外键关系-订单详情表-一对多关系
     private Set<Browsinghistory> browsinghistories = new HashSet<Browsinghistory>();//外键关系-浏览历史表-一对多
     private Set<Collectioninfo> collectioninfos = new HashSet<Collectioninfo>();//外键关系-收藏表-一对多
-    private Set<Shoppingcart> shoppingcarts = new HashSet<Shoppingcart>();//外键关系-shoppingcart_product_relation表-购物车表-多对多
+    private Set<Shoppingcart> shoppingcarts = new HashSet<Shoppingcart>();//外键关系-购物车表-一对多
 
     public Integer getId() {
         return id;

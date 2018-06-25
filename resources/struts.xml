@@ -52,5 +52,10 @@
             <param name="root">datas</param>
         </result>
     </action>
+    <action name="ShoppingcartAction_*" class="shoppingcartAction" method="{1}">
+        <result type="json">
+            <param name="root">datas</param>
+        </result>
+    </action>
 </package>
 </struts>

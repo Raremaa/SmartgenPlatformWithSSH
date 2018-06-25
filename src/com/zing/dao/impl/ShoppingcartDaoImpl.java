@@ -69,6 +69,29 @@ public class ShoppingcartDaoImpl extends HibernateDaoSupport implements Shopping
         });
     }
 
+    /**
+     * 根据id查询购物车信息
+     */
+    @Override
+    public List<Shoppingcart> getListByUserId(Integer id) throws Exception {
+        return this.getHibernateTemplate().execute(new HibernateCallback<List<Shoppingcart>>() {
+            @Override
+            public List<Shoppingcart> doInHibernate(Session session) throws HibernateException {
+                String hql ="select new Shoppingcart (id,productName,productPrice,productPicture,productCount,productMsg) from Shoppingcart where user.id="+id;
+                Query query = session.createQuery(hql);
+                return query.list();
+            }
+        });
+    }
+
+    /**
+     * 删除
+     */
+    @Override
+    public void delete(Shoppingcart shoppingcart) throws Exception {
+        this.getHibernateTemplate().delete(shoppingcart);
+    }
+
     @Resource(name = "sessionFactory")
     public void setSuperSessionFactory(SessionFactory sessionFactory){
         super.setSessionFactory(sessionFactory);

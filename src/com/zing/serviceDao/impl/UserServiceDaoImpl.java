@@ -48,4 +48,12 @@ public class UserServiceDaoImpl implements UserServiceDao {
     public User login(String userName, String userPassword) throws Exception {
         return userDao.login(userName,userPassword);
     }
+
+    /**
+     * 修改用户信息
+     */
+    @Override
+    public void update(User user) throws Exception {
+        userDao.update(user);
+    }
 }

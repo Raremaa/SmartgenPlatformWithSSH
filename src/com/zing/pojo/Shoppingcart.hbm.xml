@@ -8,11 +8,12 @@
         <id name="id" column="Id">
             <generator class="native"/>
         </id>
-        <many-to-one name="user" column="User_id" class="User"/>
-        <!--多对多关系 本方负责关系维护-->
-        <set name="products" table="shoppingcart_product_relation">
-            <key column="Shoppingcart_id"/>
-            <many-to-many class="Product" column="Product_id"/>
-        </set>
+        <property name="productName" column="Product_name"/>
+        <property name="productPrice" column="Product_price"/>
+        <property name="productPicture" column="Product_picture"/>
+        <property name="productCount" column="Product_count"/>
+        <property name="productMsg" column="Product_msg"/>
+        <many-to-one name="user" column="User_id" class="User" />
+        <many-to-one name="product" column="product_id" class="Product"/>
     </class>
 </hibernate-mapping>

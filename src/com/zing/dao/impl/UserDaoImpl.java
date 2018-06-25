@@ -110,6 +110,14 @@ public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
         });
     }
 
+    /**
+     * 修改用户信息
+     */
+    @Override
+    public void update(User user) throws Exception {
+        this.getHibernateTemplate().update(user);
+    }
+
     //    @Override
 //    通过Criteria进行id查询 应设置过于麻烦且可读性较差这里不适用
 //    public User getUserById(Serializable id) throws Exception {

@@ -49,10 +49,10 @@
             <key column="Product_id"/>
             <one-to-many class="Collectioninfo"/>
         </set>
-        <!--多对多关系 本方放弃关系维护-->
-        <set name="shoppingcarts" table="shoppingcart_product_relation" inverse="true">
+        <!--一对多关系 一的一方放弃关系维护-->
+        <set name="shoppingcarts" inverse="true">
             <key column="Product_id"/>
-            <many-to-many class="Shoppingcart" column="Shoppingcart_id"/>
+            <one-to-many class="Shoppingcart"/>
         </set>
     </class>
 </hibernate-mapping>
