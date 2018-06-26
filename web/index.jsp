@@ -11,31 +11,31 @@
     <title>$Title$</title>
 </head>
 <body>
-<%--<form action="${pageContext.request.contextPath}/PurchaseAction_purchse">--%>
-    <%--数量：<input type="text" name="purchases[0].purchaseitemCount"/>--%>
-    <%--留言：<input type="text" name="purchases[0].purchaseitemMsg"/><br>--%>
-    <%--商品id：<input type="text" name="purchases[0].productId"/>--%>
+<form action="${pageContext.request.contextPath}/SmartgenPlatformWithSSH_war/PurchaseAction_purchse">
+    数量：<input type="text" name="purchases[0].purchaseitemCount"/>
+    留言：<input type="text" name="purchases[0].purchaseitemMsg"/><br>
+    商品id：<input type="text" name="purchases[0].productId"/>
 
-    <%--数量：<input type="text" name="purchases[1].purchaseitemCount"/>--%>
-    <%--留言：<input type="text" name="purchases[1].purchaseitemMsg"/><br>--%>
-    <%--商品id：<input type="text" name="purchases[1].productId"/>--%>
+    数量：<input type="text" name="purchases[1].purchaseitemCount"/>
+    留言：<input type="text" name="purchases[1].purchaseitemMsg"/><br>
+    商品id：<input type="text" name="purchases[1].productId"/>
 
-    <%--用户id：<input type="text" name="user.id"/>--%>
+    用户id：<input type="text" name="user.id"/>
 
-    <%--收货地址表id<input type="text" name="purchaseaddress.id"/>--%>
-    <%--<input type="submit" value="提交"/>--%>
-<%--</form>--%>
+    收货地址表id<input type="text" name="purchaseaddress.id"/>
+    <input type="submit" value="提交"/>
+</form>
 <%--<form action="${pageContext.request.contextPath}/PurchaseaddressAction_save">--%>
     <%--数量：<input type="text" name="user.id"/>--%>
     <%--留言：<input type="text" name="puraddressCity"/><br>--%>
     <%--<input type="submit" value="提交"/>--%>
 <%--</form>--%>
-<form action="${pageContext.request.contextPath}/ShoppingcartAction_addShoppingcart">
-    用户id：<input type="text" name="user.id"/>
-    产品1id：<input type="text" name="shoppingcartList[0].product.id"/>
-    数量：<input type="text" name="shoppingcartList[0].productCount"/>
-    <br><br>
-    <input type="submit" value="提交"/>
+<%--<form action="${pageContext.request.contextPath}/ShoppingcartAction_addShoppingcart">--%>
+    <%--用户id：<input type="text" name="user.id"/>--%>
+    <%--产品1id：<input type="text" name="shoppingcartList[0].product.id"/>--%>
+    <%--数量：<input type="text" name="shoppingcartList[0].productCount"/>--%>
+    <%--<br><br>--%>
+    <%--<input type="submit" value="提交"/>--%>
 </form>
 </body>
 </html>

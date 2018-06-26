@@ -99,15 +99,15 @@ public class CollectioninfoDaoImpl extends HibernateDaoSupport implements Collec
             public List<Product> doInHibernate(Session session) throws HibernateException {
                 String hql = "from Collectioninfo c where 1=1 and c.user.id ="+userId;
                 Query query = session.createQuery(hql);
-                List<Product> list = query.list();
+                List<Collectioninfo> list = query.list();
                 List<Product> result = new ArrayList<Product>(0);
-                for(Product p:list){
+                for(Collectioninfo c:list){
                     Product pt = new Product();
-                    pt.setId(p.getId());
-                    pt.setProductName(p.getProductName());
-                    pt.setProductOneMsg(p.getProductOneMsg());
-                    pt.setProductPrice(p.getProductPrice());
-                    pt.setProductPicture(p.getProductPicture());
+                    pt.setId(c.getProduct().getId());
+                    pt.setProductName(c.getProduct().getProductName());
+                    pt.setProductOneMsg(c.getProduct().getProductOneMsg());
+                    pt.setProductPrice(c.getProduct().getProductPrice());
+                    pt.setProductPicture(c.getProduct().getProductPicture());
                     result.add(pt);
                 }
                 return result;

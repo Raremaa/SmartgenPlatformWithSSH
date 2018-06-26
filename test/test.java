@@ -1,9 +1,13 @@
-import com.zing.util.DateUtil;
+
+import com.zing.util.JsonUtil;
+import com.zing.util.TuringRobotUtil;
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.io.FileOutputStream;
 import java.io.OutputStreamWriter;
-import java.util.Date;
+
 
 public class test {
 
@@ -38,4 +42,11 @@ public class test {
         }
         System.err.println(sb.toString());
     }
+
+    @Test
+    public void fun3() throws Exception{
+        String n = TuringRobotUtil.doApi("众智");
+        JsonUtil.jsonToMap(n);
+    }
+
 }

@@ -57,5 +57,15 @@
             <param name="root">datas</param>
         </result>
     </action>
+    <action name="TuringRobotAction_*" class="turingRobotAction" method="{1}">
+        <result type="json">
+            <param name="root">datas</param>
+        </result>
+    </action>
+    <action name="QiNiuAction_*" class="qiNiuAction" method="{1}">
+        <result type="json">
+            <param name="root">datas</param>
+        </result>
+    </action>
 </package>
 </struts>
