@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.zing.pojo">
+
+    <class name="Purchase" table="purchase">
+        <id name="id" column="Id">
+            <generator class="native"/>
+        </id>
+        <property name="purchaseNo" column="Purchase_no"/>
+        <property name="purchasePaymentTime" column="Purchase_paymentTime"/>
+        <property name="purchasePatternOfPayment" column="Purchase_patternOfPayment"/>
+        <property name="purchaseState" column="Purchase_state"/>
+        <property name="purchasePrice" column="Purchase_price"/>
+        <many-to-one name="user" column="User_id" class="User"/>
+        <many-to-one name="purchaseaddress" column="Purchaseaddress_id" class="Purchaseaddress"/>
+        <set name="purchaseitems" inverse="true">
+            <key column="Purchase_id"/>
+            <one-to-many class="Purchaseitem"/>
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.zing.pojo">
+
+    <class name="User" table="user">
+        <id name="id" column="User_id">
+            <generator class="native"/>
+        </id>
+        <property name="userRealName" column="User_realName"/>
+        <property name="userName" column="User_name"/>
+        <property name="userPhone" column="User_phone"/>
+        <property name="userPassword" column="User_password"/>
+        <property name="userSex" column="User_sex"/>
+        <property name="userHeadPortrait" column="User_headPortrait"/>
+        <property name="userIdNumber" column="User_IDNumber"/>
+        <property name="userLocation" column="User_location"/>
+        <property name="userIdentity" column="User_identity"/>
+        <!--一对多关系 一的一方放弃关系维护-->
+        <set name="purchaseaddresses" inverse="true">
+            <key column="User_id"/>
+            <one-to-many class="Purchaseaddress"/>
+        </set>
+        <!--一对多关系 一的一方放弃关系维护-->
+        <set name="productevalutes" inverse="true">
+            <key column="User_id"/>
+            <one-to-many class="Productevalute"/>
+        </set>
+        <!--一对多关系 一的一方放弃关系维护-->
+        <set name="purchases" inverse="true">
+            <key column="User_id"/>
+            <one-to-many class="Purchase"/>
+        </set>
+        <!--一对多关系 一的一方放弃关系维护-->
+        <set name="browsinghistories" inverse="true">
+            <key column="User_id"/>
+            <one-to-many class="Browsinghistory"/>
+        </set>
+        <!--一对多关系 一的一方放弃关系维护-->
+        <set name="collectioninfos" inverse="true" lazy="false">
+            <key column="User_id"/>
+            <one-to-many class="Collectioninfo"/>
+        </set>
+        <!--一对多关系 一的一方放弃关系维护-->
+        <set name="shoppingcarts" inverse="true">
+            <key column="User_id"/>
+            <one-to-many class="Shoppingcart"/>
+        </set>
+    </class>
+</hibernate-mapping>

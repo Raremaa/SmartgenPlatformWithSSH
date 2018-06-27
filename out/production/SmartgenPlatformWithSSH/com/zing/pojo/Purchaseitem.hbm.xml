@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.zing.pojo">
+
+    <class name="Purchaseitem" table="purchaseitem">
+        <id name="id" column="Id">
+            <generator class="native"/>
+        </id>
+        <property name="purchaseitemCount" column="Purchaseitem_count"/>
+        <property name="purchaseitemMsg" column="Purchaseitem_msg"/>
+        <property name="purchaseitemTime" column="Purchaseitem_time"/>
+        <property name="purchaseitemWay" column="Purchaseitem_way"/>
+        <property name="purchaseitemSinglePrice" column="Purchaseitem_singlePrice"/>
+        <property name="purchaseitemPrice" column="Purchaseitem_price"/>
+        <property name="purchaseitemName" column="Purchaseitem_name"/>
+        <property name="purchaseitemStatus" column="purchaseitem_status"/>
+        <property name="purchaseitemPicture" column="Purchaseitem_picture"/>
+        <many-to-one name="purchase" column="Purchase_id" class="Purchase" cascade="save-update"/>
+        <many-to-one name="product" column="Product_id" class="Product"/>
+        <one-to-one name="productevalute" class="Productevalute" property-ref="purchaseitem"/>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+        "http://struts.apache.org/dtds/struts-2.5.dtd">
+
+<struts>
+    <!--由spring进行对象创建 同时进行自动依赖注入-->
+    <constant name="struts.objectFactory" value="spring"/>
+<package name="action" extends="struts-default" namespace="/">
+    <!--配置result-type 返回json字符串-->
+    <result-types>
+        <result-type name="json" class="org.apache.struts2.json.JSONResult"/>
+    </result-types>
+    <interceptors>
+        <interceptor name="json" class="org.apache.struts2.json.JSONInterceptor"/>
+    </interceptors>
+    <!--struts2 2.5+需添加这一条进行动态方法调用-->
+    <global-allowed-methods>regex:.*</global-allowed-methods>
+    <action name="UserAction_*" class="userAction" method="{1}">
+        <result type="json">
+            <param name="root">datas</param>
+        </result>
+    </action>
+    <action name="CreativeprojectAction_*" class="creativeprojectAction" method="{1}">
+        <result type="json">
+            <param name="root">datas</param>
+        </result>
+    </action>
+    <action name="ProductAction_*" class="productAction" method="{1}">
+        <result type="json">
+            <param name="root">datas</param>
+        </result>
+    </action>
+    <action name="CreativeremarkAction_*" class="creativeremarkAction" method="{1}">
+        <result type="json">
+            <param name="root">datas</param>
+        </result>
+    </action>
+    <action name="CollectioninfoAction_*" class="collectioninfoAction" method="{1}">
+        <result type="json">
+            <param name="root">datas</param>
+        </result>
+    </action>
+    <action name="PurchaseAction_*" class="purchaseAction" method="{1}">
+        <result type="json">
+            <param name="root">datas</param>
+        </result>
+    </action>
+    <action name="PurchaseaddressAction_*" class="purchaseaddressAction" method="{1}">
+        <result type="json">
+            <param name="root">datas</param>
+        </result>
+    </action>
+    <action name="ShoppingcartAction_*" class="shoppingcartAction" method="{1}">
+        <result type="json">
+            <param name="root">datas</param>
+        </result>
+    </action>
+    <action name="TuringRobotAction_*" class="turingRobotAction" method="{1}">
+        <result type="json">
+            <param name="root">datas</param>
+        </result>
+    </action>
+    <action name="QiNiuAction_*" class="qiNiuAction" method="{1}">
+        <result type="json">
+            <param name="root">datas</param>
+        </result>
+    </action>
+</package>
+</struts>

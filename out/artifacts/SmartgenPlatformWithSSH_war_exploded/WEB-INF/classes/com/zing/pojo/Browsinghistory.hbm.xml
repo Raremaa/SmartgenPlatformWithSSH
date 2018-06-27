@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.zing.pojo">
+
+    <class name="Browsinghistory" table="browsinghistory">
+        <id name="id" column="Id">
+            <generator class="native"/>
+        </id>
+        <many-to-one name="product" column="Product_id" class="Product"/>
+        <many-to-one name="user" column="User_id" class="User"/>
+    </class>
+</hibernate-mapping>

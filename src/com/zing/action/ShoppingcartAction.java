@@ -179,7 +179,7 @@ public class ShoppingcartAction extends ActionSupport implements ModelDriven<Sho
                 JsonResultForMapUtil.packageClass(datas,jsonResult);
                 return SUCCESS;
             }
-            shoppingcartServiceDao.delete(shoppingcart);
+            shoppingcartServiceDao.delete(list.get(0));
             jsonResult.setSuccess(true);
             jsonResult.setMsg("删除成功");
         } catch (Exception e) {

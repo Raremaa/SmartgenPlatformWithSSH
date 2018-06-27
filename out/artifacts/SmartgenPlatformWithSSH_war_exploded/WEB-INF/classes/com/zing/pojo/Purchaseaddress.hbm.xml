@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.zing.pojo">
+
+    <class name="Purchaseaddress" table="purchaseaddress">
+        <id name="id" column="Id">
+            <generator class="native"/>
+        </id>
+        <property name="puraddressIsChoice" column="Puraddress_isChoice"/>
+        <property name="puraddressUserName" column="Puraddress_userName"/>
+        <property name="puraddressAddress" column="Puraddress_address"/>
+        <property name="puraddressUserPhone" column="Puraddress_userPhone"/>
+        <property name="puraddressZipcode" column="Puraddress_zipcode"/>
+        <property name="puraddressProvince" column="Puraddress_province"/>
+        <property name="puraddressCity" column="Puraddress_city"/>
+        <many-to-one name="user" column="User_id" class="User"/>
+        <set name="purchases">
+            <key column="Purchaseaddress_id"/>
+            <one-to-many class="Purchase"/>
+        </set>
+    </class>
+</hibernate-mapping>
